@@ -64,9 +64,7 @@ void Game::update() {
 void Game::render() {
 	SDL_RenderClear(renderer);
 
-
 	SDL_RenderCopy(renderer, playerTex, NULL, &destR);
-
 	
 	SDL_RenderPresent(renderer);
 }
