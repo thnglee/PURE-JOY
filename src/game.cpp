@@ -1,8 +1,9 @@
 #include "game.h"
 #include "TextureManager.h"	
+#include "GameObject.h"
 
-SDL_Texture* playerTex;
-SDL_Rect srcR, destR;
+GameObject* player;
+GameObject* bunny;
 
 Game::Game() {}
 Game::~Game() {}
@@ -29,12 +30,10 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		isRunning = false;
 	}
 
-	/*SDL_Surface* tmpSurface = IMG_Load("assets/Characters/cow_spritesheet.png");
-	playerTex = SDL_CreateTextureFromSurface(renderer, tmpSurface);
-	SDL_FreeSurface(tmpSurface);*/
-
-	playerTex = TextureManager::LoadTexture("assets/Characters/cow_spritesheet.png", renderer);
+	player = new GameObject("assets/Characters/cow_spritesheet.png", renderer , 0, 0);
+	bunny = new GameObject("assets/Characters/character_actions_spritesheet.png", renderer, 10, 10);
 }
+
 
 void Game::handleEvents() {
 	SDL_Event event;
@@ -52,18 +51,14 @@ void Game::handleEvents() {
 }
 
 void Game::update() {
-	cnt++; //  tesing if the program is running by putting stuff in update loop that we can watch
-
-	destR.h = 60;
-	destR.w = 60;
-	destR.x = cnt;
-
-	std::cout << cnt << std::endl;
+	player->Update();
+	bunny->Update();
 }
 
 void Game::render() {
 	SDL_RenderClear(renderer);
-	SDL_RenderCopy(renderer, playerTex, NULL, &destR);
+	player->Render();
+	bunny->Render();
 	SDL_RenderPresent(renderer);
 }
 
