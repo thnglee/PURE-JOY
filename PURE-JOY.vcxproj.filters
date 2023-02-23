@@ -28,7 +28,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="assets\Characters\character_actions.png">
+    <Image Include="assets\Characters\character_actions_spritesheet.png">
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="assets\Characters\character_spritesheet.png">
@@ -49,19 +49,19 @@
     <Image Include="assets\Objects\plants_spritesheet.png">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="assets\Objects\tools_materials_ss.png">
+    <Image Include="assets\Objects\tools_materials_spritesheet.png">
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="assets\Objects\chest_spritesheet.png">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="assets\Objects\paths_ss.png">
+    <Image Include="assets\Objects\paths_spritesheet.png">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="assets\Objects\milk_glass_ss.png">
+    <Image Include="assets\Objects\milk_glass_spritesheet.png">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="assets\Objects\wood_bridge_ss.png">
+    <Image Include="assets\Objects\wood_bridge_spritesheet.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

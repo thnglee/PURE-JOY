@@ -141,18 +141,18 @@
     <ClInclude Include="game.h" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="assets\Characters\character_actions.png" />
+    <Image Include="assets\Characters\character_actions_spritesheet.png" />
     <Image Include="assets\Characters\character_spritesheet.png" />
     <Image Include="assets\Characters\cow_spritesheet.png" />
     <Image Include="assets\Characters\tools_spritesheet.png" />
     <Image Include="assets\Objects\funiture_spritesheet.png" />
     <Image Include="assets\Objects\grassbiom_spritesheet.png" />
     <Image Include="assets\Objects\plants_spritesheet.png" />
-    <Image Include="assets\Objects\tools_materials_ss.png" />
+    <Image Include="assets\Objects\tools_materials_spritesheet.png" />
     <Image Include="assets\Objects\chest_spritesheet.png" />
-    <Image Include="assets\Objects\paths_ss.png" />
-    <Image Include="assets\Objects\milk_glass_ss.png" />
-    <Image Include="assets\Objects\wood_bridge_ss.png" />
+    <Image Include="assets\Objects\paths_spritesheet.png" />
+    <Image Include="assets\Objects\milk_glass_spritesheet.png" />
+    <Image Include="assets\Objects\wood_bridge_spritesheet.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
