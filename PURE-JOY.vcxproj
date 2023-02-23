@@ -134,11 +134,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="game.cpp" />
-    <ClCompile Include="main.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="game.h" />
+    <ClInclude Include="src\game.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\Characters\character_actions_spritesheet.png" />
@@ -153,6 +149,10 @@
     <Image Include="assets\Objects\paths_spritesheet.png" />
     <Image Include="assets\Objects\milk_glass_spritesheet.png" />
     <Image Include="assets\Objects\wood_bridge_spritesheet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\game.cpp" />
+    <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
