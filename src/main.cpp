@@ -20,23 +20,19 @@ int main(int argc, const char* argv[]) {
 	game->init("PURE JOY", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WIDTH, HEIGHT, false);
 
 	while (game->running())
-	{ 
-			
+	{ 	
 		frameStart = SDL_GetTicks();
 
 		game->handleEvents();
 		game->update();
 		game->render();
 
-
 		frameTime = SDL_GetTicks() - frameStart;
 		// know how long frame has taken
-
 		if (frameDelay > frameTime) {
 			// if frameDelay longer than frameTime, it'll continue the delay process
 			SDL_Delay(frameDelay - frameTime);
 		} // each frame delays for 1000 / FPS milisecond no matter what.
-
 	}
 	game->clean();
 	return 0;

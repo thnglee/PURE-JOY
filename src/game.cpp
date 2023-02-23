@@ -4,7 +4,6 @@
 SDL_Texture* playerTex;
 SDL_Rect srcR, destR;
 
-
 Game::Game() {}
 Game::~Game() {}
 
@@ -35,12 +34,12 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 	SDL_FreeSurface(tmpSurface);*/
 
 	playerTex = TextureManager::LoadTexture("assets/Characters/cow_spritesheet.png", renderer);
-
 }
 
 void Game::handleEvents() {
 	SDL_Event event;
 	SDL_PollEvent(&event);
+
 	switch (event.type)
 	{
 	case SDL_QUIT:
@@ -72,5 +71,6 @@ void Game::clean() {
 	SDL_DestroyWindow(window);
 	SDL_DestroyRenderer(renderer);
 	SDL_Quit();
+
 	std::cout << "Game cleaned ..." << std::endl;
 }
