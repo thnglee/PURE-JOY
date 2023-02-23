@@ -1,3 +1,4 @@
 # PURE-JOY
 
-whatever will be, will be
+cause if you like the way you look that much 
+oh baby you should go and love yourself 
