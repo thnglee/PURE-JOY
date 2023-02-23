@@ -18,13 +18,15 @@ public:
 
 	bool running() {	 // asking if the game is still running
 		return isRunning;
-	}				
+	}		
+
+	static SDL_Renderer* renderer;
+	// avoid passing too many same pointer references.
 
 private:
 	int cnt = 0; // count - testing if the game is running -> update();
 	bool isRunning;
 	SDL_Window* window;
-	SDL_Renderer* renderer;
-};
+};		
 
 

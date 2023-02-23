@@ -5,6 +5,8 @@
 GameObject* player;
 GameObject* bunny;
 
+SDL_Renderer* Game::renderer = nullptr;
+
 Game::Game() {}
 Game::~Game() {}
 
@@ -14,24 +16,17 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		flags = SDL_WINDOW_FULLSCREEN;
 	}
 	if (SDL_Init(SDL_INIT_EVERYTHING) == 0) {
-		std::cout << "Subsystem created ... " << std::endl;
 		window = SDL_CreateWindow(title, xpos, ypos, width, height, flags);
-		if (window) {
-			std::cout << "Window created ..." << std::endl;
-		}
 		renderer = SDL_CreateRenderer(window, -1, 0);
 		if (renderer) {
-			SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);	
-			std::cout << "Renderer created ..." << std::endl;
+			SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
 		}
 		isRunning = true;
 	}
-	else {
-		isRunning = false;
-	}
+	else isRunning = false;
 
-	player = new GameObject("assets/Characters/cow_spritesheet.png", renderer , 0, 0);
-	bunny = new GameObject("assets/Characters/character_actions_spritesheet.png", renderer, 10, 10);
+	player = new GameObject("assets/Characters/cow_spritesheet.png", 0, 0);
+	bunny = new GameObject("assets/Characters/character_actions_spritesheet.png", 50, 50);
 }
 
 
@@ -66,6 +61,4 @@ void Game::clean() {
 	SDL_DestroyWindow(window);
 	SDL_DestroyRenderer(renderer);
 	SDL_Quit();
-
-	std::cout << "Game cleaned ..." << std::endl;
 }

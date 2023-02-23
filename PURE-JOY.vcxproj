@@ -136,6 +136,7 @@
   <ItemGroup>
     <ClInclude Include="src\game.h" />
     <ClInclude Include="src\GameObject.h" />
+    <ClInclude Include="src\Map.h" />
     <ClInclude Include="src\TextureManager.h" />
   </ItemGroup>
   <ItemGroup>
@@ -151,11 +152,21 @@
     <Image Include="assets\Objects\paths_spritesheet.png" />
     <Image Include="assets\Objects\milk_glass_spritesheet.png" />
     <Image Include="assets\Objects\wood_bridge_spritesheet.png" />
+    <Image Include="assets\Tilesets\Fences.png" />
+    <Image Include="assets\Tilesets\ground tiles\new tiles\grass_hill_tiles_v2.png" />
+    <Image Include="assets\Tilesets\ground tiles\new tiles\grass_tiles_v2.png" />
+    <Image Include="assets\Tilesets\ground tiles\new tiles\Tall Grass hill tiles v.2.png" />
+    <Image Include="assets\Tilesets\ground tiles\old tiles\Grass.png" />
+    <Image Include="assets\Tilesets\ground tiles\old tiles\Hills.png" />
+    <Image Include="assets\Tilesets\ground tiles\old tiles\Tilled Dirt.png" />
+    <Image Include="assets\Tilesets\Water.png" />
+    <Image Include="assets\Tilesets\Wooden House.png" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\game.cpp" />
     <ClCompile Include="src\GameObject.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\Map.cpp" />
     <ClCompile Include="src\TextureManager.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
