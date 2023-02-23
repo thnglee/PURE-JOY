@@ -1,11 +1,11 @@
 #include "game.h"
+#include "TextureManager.h"	
 
 SDL_Texture* playerTex;
 SDL_Rect srcR, destR;
 
 
 Game::Game() {}
-
 Game::~Game() {}
 
 void Game::init(const char* title, int xpos, int ypos, int width, int height, bool fullscreen) {
@@ -30,9 +30,11 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		isRunning = false;
 	}
 
-	SDL_Surface* tmpSurface = IMG_Load("assets/Characters/cow_spritesheet.png");
+	/*SDL_Surface* tmpSurface = IMG_Load("assets/Characters/cow_spritesheet.png");
 	playerTex = SDL_CreateTextureFromSurface(renderer, tmpSurface);
-	SDL_FreeSurface(tmpSurface);
+	SDL_FreeSurface(tmpSurface);*/
+
+	playerTex = TextureManager::LoadTexture("assets/Characters/cow_spritesheet.png", renderer);
 
 }
 
@@ -55,7 +57,6 @@ void Game::update() {
 
 	destR.h = 60;
 	destR.w = 60;
-
 	destR.x = cnt;
 
 	std::cout << cnt << std::endl;
@@ -63,9 +64,7 @@ void Game::update() {
 
 void Game::render() {
 	SDL_RenderClear(renderer);
-
 	SDL_RenderCopy(renderer, playerTex, NULL, &destR);
-	
 	SDL_RenderPresent(renderer);
 }
 
