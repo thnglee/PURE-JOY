@@ -2,8 +2,11 @@
 #include "TextureManager.h"	
 #include "GameObject.h"
 
-GameObject* player;
+#include "Map.h"
+
+GameObject* cow;
 GameObject* bunny;
+Map* map;
 
 SDL_Renderer* Game::renderer = nullptr;
 
@@ -25,8 +28,9 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 	}
 	else isRunning = false;
 
-	player = new GameObject("assets/Characters/cow_spritesheet.png", 0, 0);
+	cow = new GameObject("assets/Characters/cow_spritesheet.png", 0, 0);
 	bunny = new GameObject("assets/Characters/character_actions_spritesheet.png", 50, 50);
+	map = new Map();
 }
 
 
@@ -46,13 +50,14 @@ void Game::handleEvents() {
 }
 
 void Game::update() {
-	player->Update();
+	cow->Update();
 	bunny->Update();
 }
 
 void Game::render() {
 	SDL_RenderClear(renderer);
-	player->Render();
+	map->DrawMap();
+	cow->Render();
 	bunny->Render();
 	SDL_RenderPresent(renderer);
 }
