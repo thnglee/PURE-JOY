@@ -3,11 +3,17 @@
 #include "GameObject.h"
 #include "Map.h"
 
+#include "ECS.h"
+#include "Components.h"
+
 GameObject* cow;
 GameObject* bunny;
 Map* map;
 
 SDL_Renderer* Game::renderer = nullptr;
+
+Manager manager;
+auto& newPlayer(manager.addEntity());
 
 Game::Game() {}
 Game::~Game() {}
@@ -30,6 +36,9 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 	cow = new GameObject("assets/Characters/cow_spritesheet.png", 0, 0);
 	bunny = new GameObject("assets/Characters/character_actions_spritesheet.png", 50, 50);
 	map = new Map();
+
+	newPlayer.addComponent<PositionComponent>();
+	newPlayer.getComponent<PositionComponent>().setPos(500, 500);
 }
 
 
@@ -51,6 +60,10 @@ void Game::handleEvents() {
 void Game::update() {
 	cow->Update();
 	bunny->Update();
+
+	manager.update();
+	std::cout << newPlayer.getComponent<PositionComponent>().x() << "," <<
+		newPlayer.getComponent<PositionComponent>().y() << std::endl;
 }
 
 void Game::render() {
