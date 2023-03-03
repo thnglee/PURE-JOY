@@ -1,7 +1,6 @@
 #include "game.h"
 #include "TextureManager.h"	
 #include "GameObject.h"
-
 #include "Map.h"
 
 GameObject* cow;

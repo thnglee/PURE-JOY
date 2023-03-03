@@ -1,8 +1,8 @@
 #include "game.h"
 #undef main
 
-const int WIDTH = 1280;
-const int HEIGHT = 720;
+const int WIDTH = 800;
+const int HEIGHT = 800;
 Game* game = nullptr;
 
 int main(int argc, const char* argv[]) {

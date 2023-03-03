@@ -134,6 +134,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\ECS.h" />
     <ClInclude Include="src\game.h" />
     <ClInclude Include="src\GameObject.h" />
     <ClInclude Include="src\Map.h" />
@@ -153,12 +154,12 @@
     <Image Include="assets\Objects\milk_glass_spritesheet.png" />
     <Image Include="assets\Objects\wood_bridge_spritesheet.png" />
     <Image Include="assets\Tilesets\Fences.png" />
-    <Image Include="assets\Tilesets\ground tiles\new tiles\grass_hill_tiles_v2.png" />
-    <Image Include="assets\Tilesets\ground tiles\new tiles\grass_tiles_v2.png" />
-    <Image Include="assets\Tilesets\ground tiles\new tiles\Tall Grass hill tiles v.2.png" />
-    <Image Include="assets\Tilesets\ground tiles\old tiles\Grass.png" />
-    <Image Include="assets\Tilesets\ground tiles\old tiles\Hills.png" />
-    <Image Include="assets\Tilesets\ground tiles\old tiles\Tilled Dirt.png" />
+    <Image Include="assets\Tilesets\ground_tiles\new_tiles\grass_hill_tiles_v2.png" />
+    <Image Include="assets\Tilesets\ground_tiles\new_tiles\grass_tiles_v2.png" />
+    <Image Include="assets\Tilesets\ground_tiles\new_tiles\Tall Grass hill tiles v.2.png" />
+    <Image Include="assets\Tilesets\ground_tiles\old_tiles\Grass.png" />
+    <Image Include="assets\Tilesets\ground_tiles\old_tiles\Hills.png" />
+    <Image Include="assets\Tilesets\ground_tiles\old_tiles\tilled_dirt.png" />
     <Image Include="assets\Tilesets\Water.png" />
     <Image Include="assets\Tilesets\Wooden House.png" />
   </ItemGroup>
