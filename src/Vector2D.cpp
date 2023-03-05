@@ -1,4 +1,4 @@
-#pragma once
+ #pragma once
 
 #include "Vector2D.h"
 
@@ -55,6 +55,7 @@ Vector2D& operator*(Vector2D& v1, const Vector2D& v2) {
 Vector2D& operator/(Vector2D& v1, const Vector2D& v2) {
 	return v1.Divide(v2);
 }
+
 
 Vector2D& Vector2D::operator+=(const Vector2D& vec) {
 	return this->Add(vec);

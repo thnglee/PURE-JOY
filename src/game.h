@@ -22,6 +22,7 @@ public:
 
 	static SDL_Renderer* renderer;
 	// avoid passing too many same pointer references.
+	static SDL_Event event;
 
 private:
 	int cnt = 0; // count - testing if the game is running -> update();
