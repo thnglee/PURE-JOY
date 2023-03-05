@@ -1,19 +1,14 @@
 #include "game.h"
 #include "TextureManager.h"	
-#include "GameObject.h"
 #include "Map.h"
+#include "ECS/Components.h"
 
-#include "ECS.h"
-#include "Components.h"
-
-GameObject* cow;
-GameObject* bunny;
 Map* map;
+Manager manager;
 
 SDL_Renderer* Game::renderer = nullptr;
 
-Manager manager;
-auto& newPlayer(manager.addEntity());
+auto& player(manager.addEntity());
 
 Game::Game() {}
 Game::~Game() {}
@@ -33,12 +28,12 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 	}
 	else isRunning = false;
 
-	cow = new GameObject("assets/Characters/cow_spritesheet.png", 0, 0);
-	bunny = new GameObject("assets/Characters/character_actions_spritesheet.png", 50, 50);
 	map = new Map();
 
-	newPlayer.addComponent<PositionComponent>();
-	newPlayer.getComponent<PositionComponent>().setPos(500, 500);
+	// ecs implementation:
+
+	player.addComponent<PositionComponent>(50, 50);
+	player.addComponent<SpriteComponent>("assets/Characters/character_spritesheet.png");
 }
 
 
@@ -58,19 +53,19 @@ void Game::handleEvents() {
 }
 
 void Game::update() {
-	cow->Update();
-	bunny->Update();
-
+	manager.refresh();
 	manager.update();
-	std::cout << newPlayer.getComponent<PositionComponent>().x() << "," <<
-		newPlayer.getComponent<PositionComponent>().y() << std::endl;
+
+	if (player.getComponent<PositionComponent>().x() > 100) {
+		player.getComponent<SpriteComponent>().setTex("assets/Characters/cow_spritesheet.png");
+	}
 }
 
 void Game::render() {
 	SDL_RenderClear(renderer);
 	map->DrawMap();
-	cow->Render();
-	bunny->Render();
+
+	manager.draw(); 
 	SDL_RenderPresent(renderer);
 }
 
