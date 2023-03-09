@@ -29,6 +29,12 @@ int farm[25][25] = {
 	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
 };
 
+Map::~Map() {
+	SDL_DestroyTexture(grass);
+	SDL_DestroyTexture(water);
+	SDL_DestroyTexture(dirt);
+}
+
 Map::Map() {
 	dirt = TextureManager::LoadTexture("assets/Tilesets/ground_tiles/old_tiles/tilled_dirt.png");
 	grass = TextureManager::LoadTexture("assets/Tilesets/ground_tiles/old_tiles/Grass.png");
@@ -37,8 +43,11 @@ Map::Map() {
 	LoadMap(farm);
 
 	src.x = src.y = 0;
-	src.w = dest.w = 32;
-	src.h = dest.h = 32;
+	// src.w = dest.w = 16;
+	// src.h = dest.h = 16;
+
+	src.w = src.h = 16;
+	dest.w = dest.h = 64;
 
 	dest.x = dest.y = 0;
 }
@@ -58,8 +67,8 @@ void Map::DrawMap() {
 		for (int column = 0; column < 25; column++) {
 			type = map[row][column];
 
-			dest.x = column * 32;
-			dest.y = row * 32;
+			dest.x = column * 16 * 3;
+			dest.y = row * 16 * 3;
 
 			switch (type)
 			{

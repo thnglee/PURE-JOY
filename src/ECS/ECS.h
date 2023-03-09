@@ -41,6 +41,7 @@ class Entity {
 private:
 	bool active = true;
 	std::vector<std::unique_ptr<Component>> components;
+
 	ComponentArray componentArray;
 	ComponentBitset componentBitset;
 
@@ -50,12 +51,12 @@ public:
 	}
 	void draw() {
 		for (auto& c : components) c->draw();
-		}
+	}
 	bool isActive() const { return active; };
 	void destroy() { active = false; };
 
 	template<typename T> bool hasComponent() const {
-		return componentBitset[getComponentTypeID<T>];
+		return componentBitset[getComponentTypeID<T>()];
 	}
 
 	template <typename T, typename... TArgs>

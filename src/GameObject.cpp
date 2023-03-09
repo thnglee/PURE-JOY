@@ -13,8 +13,8 @@ void GameObject::Update() {
 	xpos++;
 	ypos++;
 
-	srcRect.h = 32; // pixel inside the spritesheet file
-	srcRect.w = 32;
+	srcRect.h = 16;// pixel inside the spritesheet file
+	srcRect.w = 16;
 	srcRect.x = 0;
 	srcRect.y = 0;
 
