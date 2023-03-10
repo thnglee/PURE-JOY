@@ -1,8 +1,10 @@
 #pragma once
-#include<stdio.h>
 #include<iostream>	
 #include "SDL_image.h"
 #include "SDL.h"
+#include<vector>
+
+class ColliderComponent;
 
 class Game {
 public:
@@ -23,6 +25,8 @@ public:
 	static SDL_Renderer* renderer;
 	// avoid passing too many same pointer references.
 	static SDL_Event event;
+
+	static std::vector<ColliderComponent*> colliders;
 
 private:
 	int cnt = 0; // count - testing if the game is running -> update();
