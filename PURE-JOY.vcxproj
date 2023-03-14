@@ -148,29 +148,6 @@
     <ClInclude Include="src\Vector2D.h" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="assets\Characters\character_actions_spritesheet.png" />
-    <Image Include="assets\Characters\character_spritesheet.png" />
-    <Image Include="assets\Characters\cow_spritesheet.png" />
-    <Image Include="assets\Characters\tools_spritesheet.png" />
-    <Image Include="assets\Objects\funiture_spritesheet.png" />
-    <Image Include="assets\Objects\grassbiom_spritesheet.png" />
-    <Image Include="assets\Objects\plants_spritesheet.png" />
-    <Image Include="assets\Objects\tools_materials_spritesheet.png" />
-    <Image Include="assets\Objects\chest_spritesheet.png" />
-    <Image Include="assets\Objects\paths_spritesheet.png" />
-    <Image Include="assets\Objects\milk_glass_spritesheet.png" />
-    <Image Include="assets\Objects\wood_bridge_spritesheet.png" />
-    <Image Include="assets\Tilesets\Fences.png" />
-    <Image Include="assets\Tilesets\ground_tiles\new_tiles\grass_hill_tiles_v2.png" />
-    <Image Include="assets\Tilesets\ground_tiles\new_tiles\grass_tiles_v2.png" />
-    <Image Include="assets\Tilesets\ground_tiles\new_tiles\Tall Grass hill tiles v.2.png" />
-    <Image Include="assets\Tilesets\ground_tiles\old_tiles\Grass.png" />
-    <Image Include="assets\Tilesets\ground_tiles\old_tiles\Hills.png" />
-    <Image Include="assets\Tilesets\ground_tiles\old_tiles\tilled_dirt.png" />
-    <Image Include="assets\Tilesets\Water.png" />
-    <Image Include="assets\Tilesets\Wooden House.png" />
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="src\Collision.cpp" />
     <ClCompile Include="src\game.cpp" />
     <ClCompile Include="src\main.cpp" />
@@ -179,10 +156,55 @@
     <ClCompile Include="src\Vector2D.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="fences_grass_water\first_dirt_grass.csv" />
-    <None Include="fences_grass_water\first_fences.csv" />
-    <None Include="fences_grass_water\first_water.csv" />
-    <None Include="fences_grass_water\first_water.map" />
+    <Image Include="assets\characters\actions.png" />
+    <Image Include="assets\characters\character.png" />
+    <Image Include="assets\characters\cow.png" />
+    <Image Include="assets\interface\all.png" />
+    <Image Include="assets\interface\big_play_buttons.png" />
+    <Image Include="assets\interface\buttons\small_square_buttons.png" />
+    <Image Include="assets\interface\buttons\square_buttons.png" />
+    <Image Include="assets\interface\buttons\square_buttons_(2).png" />
+    <Image Include="assets\interface\buttons\square_button_(3).png" />
+    <Image Include="assets\interface\dialogue\big_dialogue.png" />
+    <Image Include="assets\interface\dialogue\dialogue_box.png" />
+    <Image Include="assets\interface\dialogue\emote_animations.png" />
+    <Image Include="assets\interface\dialogue\finished_talking.png" />
+    <Image Include="assets\interface\dialogue\medium_dialogue.png" />
+    <Image Include="assets\interface\dialogue\plain_dialgue.png" />
+    <Image Include="assets\interface\dialogue\premade_dialogue.png" />
+    <Image Include="assets\interface\dialogue\premade_dialogue_medium.png" />
+    <Image Include="assets\interface\dialogue\premade_dialogue_small.png" />
+    <Image Include="assets\interface\icons\all.png" />
+    <Image Include="assets\interface\icons\happiness_sadness.png" />
+    <Image Include="assets\interface\icons\special.png" />
+    <Image Include="assets\interface\icons\white.png" />
+    <Image Include="assets\interface\menu.png" />
+    <Image Include="assets\interface\mouse\catpaw.png" />
+    <Image Include="assets\interface\mouse\catpaw_holding.png" />
+    <Image Include="assets\interface\mouse\catpaw_holding_mouse (1).png" />
+    <Image Include="assets\interface\mouse\cursor.png" />
+    <Image Include="assets\interface\mouse\cursor_(1).png" />
+    <Image Include="assets\interface\mouse\cursor_(3).png" />
+    <Image Include="assets\interface\settings_buttons.png" />
+    <Image Include="assets\objects\chest.png" />
+    <Image Include="assets\objects\furniture.png" />
+    <Image Include="assets\objects\grassbiom.png" />
+    <Image Include="assets\objects\milkglass.png" />
+    <Image Include="assets\objects\paths.png" />
+    <Image Include="assets\objects\plants.png" />
+    <Image Include="assets\objects\tools.png" />
+    <Image Include="assets\objects\tools_actions.png" />
+    <Image Include="assets\objects\wood_bridge.png" />
+    <Image Include="assets\pallete\color.PNG" />
+    <Image Include="assets\tilesets\dirt.png" />
+    <Image Include="assets\tilesets\fences.png" />
+    <Image Include="assets\tilesets\grass.png" />
+    <Image Include="assets\tilesets\grass_hill.png" />
+    <Image Include="assets\tilesets\grass_hill_(2).png" />
+    <Image Include="assets\tilesets\grass_hill_(3).png" />
+    <Image Include="assets\tilesets\grass_hill_(4).png" />
+    <Image Include="assets\tilesets\water.png" />
+    <Image Include="assets\tilesets\wood_house.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
