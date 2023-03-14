@@ -143,7 +143,6 @@
     <ClInclude Include="src\ECS\TransformComponent.h" />
     <ClInclude Include="src\ECS\SpriteComponent.h" />
     <ClInclude Include="src\game.h" />
-    <ClInclude Include="src\GameObject.h" />
     <ClInclude Include="src\Map.h" />
     <ClInclude Include="src\TextureManager.h" />
     <ClInclude Include="src\Vector2D.h" />
@@ -174,11 +173,16 @@
   <ItemGroup>
     <ClCompile Include="src\Collision.cpp" />
     <ClCompile Include="src\game.cpp" />
-    <ClCompile Include="src\GameObject.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Map.cpp" />
     <ClCompile Include="src\TextureManager.cpp" />
     <ClCompile Include="src\Vector2D.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="fences_grass_water\first_dirt_grass.csv" />
+    <None Include="fences_grass_water\first_fences.csv" />
+    <None Include="fences_grass_water\first_water.csv" />
+    <None Include="fences_grass_water\first_water.map" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

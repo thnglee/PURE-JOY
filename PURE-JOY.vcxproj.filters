@@ -13,15 +13,15 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Resource Files\map_csv">
+      <UniqueIdentifier>{54cb8edd-14ef-4286-8fa9-f827c22b012c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\game.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\TextureManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GameObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Map.h">
@@ -130,9 +130,6 @@
     <ClCompile Include="src\TextureManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\GameObject.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\Map.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -142,5 +139,19 @@
     <ClCompile Include="src\Collision.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="fences_grass_water\first_dirt_grass.csv">
+      <Filter>Resource Files\map_csv</Filter>
+    </None>
+    <None Include="fences_grass_water\first_fences.csv">
+      <Filter>Resource Files\map_csv</Filter>
+    </None>
+    <None Include="fences_grass_water\first_water.csv">
+      <Filter>Resource Files\map_csv</Filter>
+    </None>
+    <None Include="fences_grass_water\first_water.map">
+      <Filter>Resource Files\map_csv</Filter>
+    </None>
   </ItemGroup>
 </Project>

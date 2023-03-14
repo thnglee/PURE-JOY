@@ -1,4 +1,5 @@
 #pragma once
+
 #include<iostream>	
 #include "SDL_image.h"
 #include "SDL.h"
@@ -13,24 +14,24 @@ public:
 
 	void init(const char* title, int xpos, int ypos, int width, int height, bool fullscreen);
 	
-	void handleEvents(); // handle user input
-	void update();		 // update the game
-	void render();		 // draw the game
-	void clean();		 // clean game memory once finished
+	void handleEvents();
+	void update();		
+	void render();		 
+	void clean();		 
 
-	bool running() {	 // asking if the game is still running
+	bool running() {	 
 		return isRunning;
 	}		
 
-	static SDL_Renderer* renderer;
-	// avoid passing too many same pointer references.
-	static SDL_Event event;
+	static void AddTile(int id, int x, int y);
 
+	static SDL_Renderer* renderer;
+	static SDL_Event event;
 	static std::vector<ColliderComponent*> colliders;
 
 private:
-	int cnt = 0; // count - testing if the game is running -> update();
 	bool isRunning;
+	int cnt = 0; 
 	SDL_Window* window;
 };		
 
