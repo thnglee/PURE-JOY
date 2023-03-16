@@ -1,4 +1,5 @@
 # PURE-JOY
 
-farming game, pretty much similar to stardew valley
-still in developing progress, pls help
+a game about farming, pretty much similar to Stardew Valley
+
+still in progress
