@@ -135,6 +135,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="src\Collision.h" />
+    <ClInclude Include="src\ECS\Animation.h" />
     <ClInclude Include="src\ECS\ColliderComponent.h" />
     <ClInclude Include="src\ECS\Components.h" />
     <ClInclude Include="src\ECS\ECS.h" />
@@ -149,6 +150,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Collision.cpp" />
+    <ClCompile Include="src\ECS\ECS.cpp" />
     <ClCompile Include="src\game.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Map.cpp" />
@@ -205,6 +207,14 @@
     <Image Include="assets\tilesets\grass_hill_(4).png" />
     <Image Include="assets\tilesets\water.png" />
     <Image Include="assets\tilesets\wood_house.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="map\map_v1.0\grass.map" />
+    <None Include="map\map_v1.0\island_v1.0.tmx" />
+    <None Include="map\map_v1.0\island_v1_fences.csv" />
+    <None Include="map\map_v1.0\island_v1_grass.csv" />
+    <None Include="map\map_v1.0\island_v1_water.csv" />
+    <None Include="map\map_v1.0\water.map" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

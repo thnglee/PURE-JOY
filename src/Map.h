@@ -8,6 +8,4 @@ public:
 
 	static void LoadMap(std::string path, int sizeX, int sizeY);
 
-private:
-
 };	

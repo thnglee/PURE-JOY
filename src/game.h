@@ -31,7 +31,7 @@ public:
 
 private:
 	bool isRunning;
-	int cnt = 0; 
+	int cnt = 0;
 	SDL_Window* window;
 };		
 

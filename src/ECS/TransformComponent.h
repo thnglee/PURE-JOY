@@ -11,7 +11,7 @@ public:
 
 	int height = 16;
 	int width = 16;
-	int scale = 3;
+	int scale = 1;
 
 	int speed = 4;
 

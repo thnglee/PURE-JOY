@@ -7,9 +7,11 @@
 class KeyboardController : public Component {
 public:
 	TransformComponent* transform;
+	SpriteComponent* sprite;
 
 	void init() override {
 		transform = &entity->getComponent<TransformComponent>();
+		sprite = &entity->getComponent<SpriteComponent>();
 	}
 	
 	void update() override {
@@ -18,18 +20,22 @@ public:
 			{
 			case SDLK_w:
 				transform->velocity.y = -1;
+				sprite->Play("WalkUp");
 				break;
 
 			case SDLK_a:
 				transform->velocity.x = -1;
+				sprite->Play("WalkLeft");
 				break;
 
 			case SDLK_d:
 				transform->velocity.x = 1;
+				sprite->Play("WalkRight");
 				break;
 				
 			case SDLK_s:
 				transform->velocity.y = 1;
+				sprite->Play("WalkDown");
 				break;
 
 			default:
@@ -42,18 +48,22 @@ public:
 			{
 			case SDLK_w:
 				transform->velocity.y = 0;
+				sprite->Play("IdleUp");
 				break;
 
 			case SDLK_a:
 				transform->velocity.x = 0;
+				sprite->Play("IdleLeft");
 				break;
 
 			case SDLK_d:
 				transform->velocity.x = 0;
+				sprite->Play("IdleRight");
 				break;
 
 			case SDLK_s:
 				transform->velocity.y = 0;
+				sprite->Play("IdleDown");
 				break;
 
 			default:

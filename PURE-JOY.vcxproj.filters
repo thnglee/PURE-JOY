@@ -40,6 +40,12 @@
     <Filter Include="Resource Files\tilesets">
       <UniqueIdentifier>{5620f3f5-df2c-4fe0-8c0a-c12895243f36}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\map">
+      <UniqueIdentifier>{2e0e612c-a4b6-45f9-bd63-50aceccd2085}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\map\v1.0">
+      <UniqueIdentifier>{396f6297-8f7a-44fa-911a-7faba7132fce}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\game.h">
@@ -78,6 +84,9 @@
     <ClInclude Include="src\ECS\TileComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\ECS\Animation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\game.cpp">
@@ -96,6 +105,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Collision.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ECS\ECS.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -223,9 +235,6 @@
     <Image Include="assets\tilesets\dirt.png">
       <Filter>Resource Files\tilesets</Filter>
     </Image>
-    <Image Include="assets\tilesets\fences.png">
-      <Filter>Resource Files\tilesets</Filter>
-    </Image>
     <Image Include="assets\tilesets\grass.png">
       <Filter>Resource Files\tilesets</Filter>
     </Image>
@@ -241,11 +250,34 @@
     <Image Include="assets\tilesets\grass_hill_(4).png">
       <Filter>Resource Files\tilesets</Filter>
     </Image>
-    <Image Include="assets\tilesets\water.png">
-      <Filter>Resource Files\tilesets</Filter>
-    </Image>
     <Image Include="assets\tilesets\wood_house.png">
       <Filter>Resource Files\tilesets</Filter>
     </Image>
+    <Image Include="assets\tilesets\fences.png">
+      <Filter>Resource Files\tilesets</Filter>
+    </Image>
+    <Image Include="assets\tilesets\water.png">
+      <Filter>Resource Files\tilesets</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="map\map_v1.0\island_v1.0.tmx">
+      <Filter>Resource Files\map\v1.0</Filter>
+    </None>
+    <None Include="map\map_v1.0\island_v1_fences.csv">
+      <Filter>Resource Files\map\v1.0</Filter>
+    </None>
+    <None Include="map\map_v1.0\island_v1_grass.csv">
+      <Filter>Resource Files\map\v1.0</Filter>
+    </None>
+    <None Include="map\map_v1.0\island_v1_water.csv">
+      <Filter>Resource Files\map\v1.0</Filter>
+    </None>
+    <None Include="map\map_v1.0\water.map">
+      <Filter>Resource Files\map\v1.0</Filter>
+    </None>
+    <None Include="map\map_v1.0\grass.map">
+      <Filter>Resource Files\map\v1.0</Filter>
+    </None>
   </ItemGroup>
 </Project>
