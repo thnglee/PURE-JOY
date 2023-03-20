@@ -46,6 +46,9 @@
     <Filter Include="Resource Files\map\v1.0">
       <UniqueIdentifier>{396f6297-8f7a-44fa-911a-7faba7132fce}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\map\v1.1">
+      <UniqueIdentifier>{9e78ab3a-e669-4056-bda1-cde2371396be}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\game.h">
@@ -261,9 +264,6 @@
     </Image>
   </ItemGroup>
   <ItemGroup>
-    <None Include="map\map_v1.0\island_v1.0.tmx">
-      <Filter>Resource Files\map\v1.0</Filter>
-    </None>
     <None Include="map\map_v1.0\island_v1_fences.csv">
       <Filter>Resource Files\map\v1.0</Filter>
     </None>
@@ -273,11 +273,17 @@
     <None Include="map\map_v1.0\island_v1_water.csv">
       <Filter>Resource Files\map\v1.0</Filter>
     </None>
-    <None Include="map\map_v1.0\water.map">
-      <Filter>Resource Files\map\v1.0</Filter>
+    <None Include="map\map_v1.1\island_v1_fences - collision.csv">
+      <Filter>Resource Files\map\v1.1</Filter>
     </None>
-    <None Include="map\map_v1.0\grass.map">
-      <Filter>Resource Files\map\v1.0</Filter>
+    <None Include="map\map_v1.1\island_v1_grass details _ patterns.csv">
+      <Filter>Resource Files\map\v1.1</Filter>
+    </None>
+    <None Include="map\map_v1.1\island_v1_grass.csv">
+      <Filter>Resource Files\map\v1.1</Filter>
+    </None>
+    <None Include="map\map_v1.1\island_v1_water.csv">
+      <Filter>Resource Files\map\v1.1</Filter>
     </None>
   </ItemGroup>
 </Project>

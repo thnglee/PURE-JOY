@@ -6,15 +6,22 @@ Map::~Map() {}
 Map::Map() {}
 
 void Map::LoadMap(std::string path, int sizeX, int sizeY) {
-	char tile;
+	char c;
 	std::fstream mapFile;
 	mapFile.open(path);
+
+	int srcX, srcY;
 
 	if (mapFile) {
 		for (int y = 0; y < sizeY; y++) {
 			for (int x = 0; x < sizeX; x++) {
-				mapFile.get(tile);
-				Game::AddTile(atoi(&tile), x * 16 * 3, y * 16 * 3);
+				mapFile.get(c);
+				srcY = atoi(&c) * 16;
+
+				mapFile.get(c);
+				srcX = atoi(&c) * 16;
+
+				Game::AddTile(srcX, srcY, x * 16 * 4, y * 16 * 4);
 				mapFile.ignore();
 			}
 		}

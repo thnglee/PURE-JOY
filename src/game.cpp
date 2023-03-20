@@ -16,6 +16,8 @@ std::vector<ColliderComponent*> Game::colliders;
 auto& player(manager.addEntity());
 auto& wall(manager.addEntity());
 
+const char* waterLayer = "assets/tilesets/water.png";
+
 enum groupLabels : std::size_t {
 	groupMap,
 	groupPlayers,
@@ -46,19 +48,15 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 
 	// ecs implementation:
 
-	Map::LoadMap("map/map_v1.0/water.map", 25, 25);
+	Map::LoadMap("map/map_v1.1/island_v1_water.csv", 25, 25);
 
-	player.addComponent<TransformComponent>(3);
+	player.addComponent<TransformComponent>(4);
 	player.addComponent<SpriteComponent>("assets/characters/character.png", true);
+	player.getComponent<TransformComponent>().position.x = 250;
+	player.getComponent<TransformComponent>().position.y = 250;
 	player.addComponent<KeyboardController>();
 	player.addComponent<ColliderComponent>("player");
 	player.addGroup(groupPlayers);
-
-	wall.addComponent<TransformComponent>(300.0f, 300.0f, 16, 16, 3);
-	wall.addComponent<SpriteComponent>("assets/tilesets/fences.png");
-	wall.addComponent<ColliderComponent>("fences");
-	wall.addGroup(groupMap);
-	
 }
 
 
@@ -106,8 +104,8 @@ void Game::clean() {
 	SDL_Quit();
 }
 
-void Game::AddTile(int id, int x, int y) {
+void Game::AddTile(int srcX, int srcY, int xpos, int ypos) {
 	auto& tile(manager.addEntity());
-	tile.addComponent<TileComponent>(x, y, 16, 16, id);
+	tile.addComponent<TileComponent>(srcX, srcY, xpos, ypos, waterLayer);
 	tile.addGroup(groupMap);
 }

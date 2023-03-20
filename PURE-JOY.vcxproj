@@ -209,12 +209,13 @@
     <Image Include="assets\tilesets\wood_house.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="map\map_v1.0\grass.map" />
-    <None Include="map\map_v1.0\island_v1.0.tmx" />
     <None Include="map\map_v1.0\island_v1_fences.csv" />
     <None Include="map\map_v1.0\island_v1_grass.csv" />
     <None Include="map\map_v1.0\island_v1_water.csv" />
-    <None Include="map\map_v1.0\water.map" />
+    <None Include="map\map_v1.1\island_v1_fences - collision.csv" />
+    <None Include="map\map_v1.1\island_v1_grass details _ patterns.csv" />
+    <None Include="map\map_v1.1\island_v1_grass.csv" />
+    <None Include="map\map_v1.1\island_v1_water.csv" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
