@@ -13,14 +13,15 @@ public:
 	int width = 16;
 	int scale = 1;
 
-	int speed = 4;
+	int speed = 4;	
 
 	TransformComponent() {
 		position.Zero();
 	}
 
 	TransformComponent(int sc) {
-		position.Zero();
+		position.x = 800;
+		position.y = 450;
 		scale = sc;
 	}
 

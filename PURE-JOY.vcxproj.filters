@@ -49,6 +49,9 @@
     <Filter Include="Resource Files\map\v1.1">
       <UniqueIdentifier>{9e78ab3a-e669-4056-bda1-cde2371396be}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\map\v1.2">
+      <UniqueIdentifier>{ef3e27bd-14fc-4bd3-9d67-2c6ee5420d68}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\game.h">
@@ -276,14 +279,41 @@
     <None Include="map\map_v1.1\island_v1_fences - collision.csv">
       <Filter>Resource Files\map\v1.1</Filter>
     </None>
-    <None Include="map\map_v1.1\island_v1_grass details _ patterns.csv">
+    <None Include="map\map_v1.1\island_v1_grass.csv">
       <Filter>Resource Files\map\v1.1</Filter>
     </None>
-    <None Include="map\map_v1.1\island_v1_grass.csv">
+    <None Include="map\map_v1.1\island_v1_grass_highland.csv">
+      <Filter>Resource Files\map\v1.1</Filter>
+    </None>
+    <None Include="map\map_v1.1\island_v1_grass_patterns.csv">
       <Filter>Resource Files\map\v1.1</Filter>
     </None>
     <None Include="map\map_v1.1\island_v1_water.csv">
       <Filter>Resource Files\map\v1.1</Filter>
+    </None>
+    <None Include="map\map_v1.2\island_v1_dirt.csv">
+      <Filter>Resource Files\map\v1.2</Filter>
+    </None>
+    <None Include="map\map_v1.2\island_v1_fences.csv">
+      <Filter>Resource Files\map\v1.2</Filter>
+    </None>
+    <None Include="map\map_v1.2\island_v1_grass.csv">
+      <Filter>Resource Files\map\v1.2</Filter>
+    </None>
+    <None Include="map\map_v1.2\island_v1_grass_(2).csv">
+      <Filter>Resource Files\map\v1.2</Filter>
+    </None>
+    <None Include="map\map_v1.2\island_v1_grass_hill_(2).csv">
+      <Filter>Resource Files\map\v1.2</Filter>
+    </None>
+    <None Include="map\map_v1.2\island_v1_grass_hill_(3).csv">
+      <Filter>Resource Files\map\v1.2</Filter>
+    </None>
+    <None Include="map\map_v1.2\island_v1_water.csv">
+      <Filter>Resource Files\map\v1.2</Filter>
+    </None>
+    <None Include="map\map_v1.2\island_v1_wood_bridge.csv">
+      <Filter>Resource Files\map\v1.2</Filter>
     </None>
   </ItemGroup>
 </Project>

@@ -213,9 +213,18 @@
     <None Include="map\map_v1.0\island_v1_grass.csv" />
     <None Include="map\map_v1.0\island_v1_water.csv" />
     <None Include="map\map_v1.1\island_v1_fences - collision.csv" />
-    <None Include="map\map_v1.1\island_v1_grass details _ patterns.csv" />
     <None Include="map\map_v1.1\island_v1_grass.csv" />
+    <None Include="map\map_v1.1\island_v1_grass_highland.csv" />
+    <None Include="map\map_v1.1\island_v1_grass_patterns.csv" />
     <None Include="map\map_v1.1\island_v1_water.csv" />
+    <None Include="map\map_v1.2\island_v1_dirt.csv" />
+    <None Include="map\map_v1.2\island_v1_fences.csv" />
+    <None Include="map\map_v1.2\island_v1_grass.csv" />
+    <None Include="map\map_v1.2\island_v1_grass_(2).csv" />
+    <None Include="map\map_v1.2\island_v1_grass_hill_(2).csv" />
+    <None Include="map\map_v1.2\island_v1_grass_hill_(3).csv" />
+    <None Include="map\map_v1.2\island_v1_water.csv" />
+    <None Include="map\map_v1.2\island_v1_wood_bridge.csv" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
