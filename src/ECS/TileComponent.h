@@ -5,6 +5,8 @@
 #include "SpriteComponent.h"
 #include "SDL.h"
 
+const int TILE_SIZE = 16;
+
 class TileComponent : public Component {
 	
 public:
@@ -18,7 +20,7 @@ public:
 		SDL_DestroyTexture(texture);
 	}
 
-	TileComponent(int srcX, int srcY, int xpos, int ypos, const char* path) {
+	TileComponent(int srcX, int srcY, int xpos, int ypos, int tsize, int tscale, const char* path) {
 		texture = TextureManager::LoadTexture(path);
 
 		position.x = xpos;
@@ -26,11 +28,11 @@ public:
 		
 		srcRect.x = srcX;
 		srcRect.y = srcY;
-		srcRect.h = srcRect.w = 16;
+		srcRect.h = srcRect.w = tsize;
 
 		destRect.x = xpos;
 		destRect.y = ypos;
-		destRect.w = destRect.h = 16 * 4;
+		destRect.w = destRect.h = tsize * tscale;
 	}
 
 	void update() override {

@@ -5,6 +5,8 @@
 #include "Vector2D.h"
 #include "Collision.h"
 
+int default_scale = 4;
+
 Map* map;
 Manager manager;
 
@@ -17,25 +19,14 @@ std::vector<ColliderComponent*> Game::colliders;
 bool Game::isRunning = false;
 
 auto& player(manager.addEntity());
-auto& wall(manager.addEntity());
 
-const char* water = "assets/tilesets/water.png";
-const char* grass = "assets/tilesets/grass.png";
-const char* grass_hill_2 = "assets/tilesets/grass_hill_(2).png";
-const char* wood_bridge = "assets/objects/wood_bridge.png";
-const char* grass_hill_3 = "assets/tilesets/grass_hill_(3).png";
-const char* dirt = "assets/tilesets/dirt.png";
 
-enum groupLabels : std::size_t {
-	groupMap,
-	groupPlayers,
-	groupEnemies,
-	groupColliders
-};
-
-auto& tiles(manager.getGroup(groupMap));
-auto& players(manager.getGroup(groupPlayers));
-auto& enemies(manager.getGroup(groupEnemies));
+//const char* water = "assets/tilesets/water.png";
+//const char* grass = "assets/tilesets/grass.png";
+//const char* grass_hill_2 = "assets/tilesets/grass_hill_(2).png";
+//const char* wood_bridge = "assets/objects/wood_bridge.png";
+//const char* grass_hill_3 = "assets/tilesets/grass_hill_(3).png";
+//const char* dirt = "assets/tilesets/dirt.png";
 
 Game::Game() {}
 Game::~Game() {}
@@ -62,14 +53,16 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 
 	// ecs implementation:
 
-	Map::LoadMap("map/map_v1.2/island_v1_water.csv", 50, 50, water);
-	Map::LoadMap("map/map_v1.2/island_v1_grass.csv", 50, 50, grass);
-	Map::LoadMap("map/map_v1.2/island_v1_dirt.csv", 50, 50, dirt);
-	Map::LoadMap("map/map_v1.2/island_v1_grass_hill_(3).csv", 50, 50, grass_hill_3);
-	Map::LoadMap("map/map_v1.2/island_v1_grass_hill_(2).csv", 50, 50, grass_hill_2);
-	Map::LoadMap("map/map_v1.2/island_v1_wood_bridge.csv", 50, 50, wood_bridge);
+	map->LoadMap("")
 
-	player.addComponent<TransformComponent>(1600, 900, 16, 16, 4);
+	//Map::LoadMap("map/map_v1.2/island_v1_water.csv", 50, 50, water);
+	//Map::LoadMap("map/map_v1.2/island_v1_grass.csv", 50, 50, grass);
+	//Map::LoadMap("map/map_v1.2/island_v1_dirt.csv", 50, 50, dirt);
+	//Map::LoadMap("map/map_v1.2/island_v1_grass_hill_(3).csv", 50, 50, grass_hill_3);
+	//Map::LoadMap("map/map_v1.2/island_v1_grass_hill_(2).csv", 50, 50, grass_hill_2);
+	//Map::LoadMap("map/map_v1.2/island_v1_wood_bridge.csv", 50, 50, wood_bridge);
+
+	player.addComponent<TransformComponent>(0, 0, OBJECT_WIDTH, OBJECT_HEIGHT, default_scale);
 	player.addComponent<SpriteComponent>("assets/characters/character.png", true);
 	player.getComponent<TransformComponent>().position.x = 250;
 	player.getComponent<TransformComponent>().position.y = 250;
@@ -78,6 +71,10 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 	player.addGroup(groupPlayers);
 }
 
+
+auto& tiles(manager.getGroup(Game::groupMap));
+auto& players(manager.getGroup(Game::groupPlayers));
+auto& tiles(manager.getGroup(Game::groupColliders));
 
 void Game::handleEvents() {
 	SDL_PollEvent(&event);
@@ -95,13 +92,13 @@ void Game::update() {
 	manager.refresh();
 	manager.update();
 
-	camera.x = static_cast<int>(player.getComponent<TransformComponent>().position.x - 800);
-	camera.y = static_cast<int>(player.getComponent<TransformComponent>().position.y - 450);
+	camera.x = static_cast<int>(player.getComponent<TransformComponent>().position.x + OBJECT_WIDTH * default_scale / 2 - WINDOW_WIDTH / 2);
+	camera.y = static_cast<int>(player.getComponent<TransformComponent>().position.y + OBJECT_HEIGHT * default_scale / 2 - WINDOW_HEIGHT / 2);
 
 	if (camera.x < 0) camera.x = 0;
 	if (camera.y < 0) camera.y = 0;
-	if (camera.x + camera.w > 16 * 4 * 50) camera.x = 16 * 4 * 50 - camera.w;
-	if (camera.y + camera.h > 16 * 4 * 50) camera.y = 16 * 4 * 50 - camera.h;
+	if (camera.x > MAP_WIDTH * default_scale - camera.w) camera.x = MAP_WIDTH * default_scale - camera.w;
+	if (camera.y > MAP_HEIGHT * default_scale - camera.h) camera.y = MAP_HEIGHT * default_scale - camera.h;
 }
 
 
@@ -125,10 +122,4 @@ void Game::clean() {
 	SDL_DestroyWindow(window);
 	SDL_DestroyRenderer(renderer);
 	SDL_Quit();
-}
-
-void Game::AddTile(int srcX, int srcY, int xpos, int ypos, const char* layerPath) {
-	auto& tile(manager.addEntity());
-	tile.addComponent<TileComponent>(srcX, srcY, xpos, ypos, layerPath);
-	tile.addGroup(groupMap);
 }

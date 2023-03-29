@@ -315,5 +315,8 @@
     <None Include="map\map_v1.2\island_v1_wood_bridge.csv">
       <Filter>Resource Files\map\v1.2</Filter>
     </None>
+    <None Include="map\map_v1.2\island_v1_blank_collision.csv">
+      <Filter>Resource Files\map\v1.2</Filter>
+    </None>
   </ItemGroup>
 </Project>

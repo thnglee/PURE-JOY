@@ -217,6 +217,7 @@
     <None Include="map\map_v1.1\island_v1_grass_highland.csv" />
     <None Include="map\map_v1.1\island_v1_grass_patterns.csv" />
     <None Include="map\map_v1.1\island_v1_water.csv" />
+    <None Include="map\map_v1.2\island_v1_blank_collision.csv" />
     <None Include="map\map_v1.2\island_v1_dirt.csv" />
     <None Include="map\map_v1.2\island_v1_fences.csv" />
     <None Include="map\map_v1.2\island_v1_grass.csv" />

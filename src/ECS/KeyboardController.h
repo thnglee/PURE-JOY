@@ -15,26 +15,37 @@ public:
 	}
 
 	void update() override {
-		transform->velocity.x = 0;
-		transform->velocity.y = 0;
-		sprite->Play("IdleDown");
+		transform->velocity.Zero();
+
+		if (transform->direction.y == -1 && transform->isIdle()) sprite->Play("IdleUp");
+		else if (transform->direction.y == 1 && transform->isIdle()) sprite->Play("IdleDown");
+		else if (transform->direction.x == 1 && transform->isIdle()) sprite->Play("IdleRight");
+		else if (transform->direction.x == -1 && transform->isIdle()) sprite->Play("IdleLeft");
 
 		const Uint8* currentKeyStates = SDL_GetKeyboardState(NULL);
-		if (currentKeyStates[SDL_SCANCODE_W]) {
-			transform->velocity.y = -1;
-			sprite->Play("WalkUp");
-		}
-		if (currentKeyStates[SDL_SCANCODE_A]) {
-			transform->velocity.x = -1;
-			sprite->Play("WalkLeft");
-		}
 		if (currentKeyStates[SDL_SCANCODE_D]) {
+			transform->direction.Zero();
 			transform->velocity.x = 1;
 			sprite->Play("WalkRight");
+			transform->direction.x = 1;
+		}
+		if (currentKeyStates[SDL_SCANCODE_A]) {
+			transform->direction.Zero();
+			transform->velocity.x = -1;
+			sprite->Play("WalkLeft");
+			transform->direction.x = -1;
+		}
+		if (currentKeyStates[SDL_SCANCODE_W]) {
+			transform->direction.Zero();
+			transform->velocity.y = -1;
+			sprite->Play("WalkUp");
+			transform->direction.y = -1;
 		}
 		if (currentKeyStates[SDL_SCANCODE_S]) {
+			transform->direction.Zero();
 			transform->velocity.y = 1;
 			sprite->Play("WalkDown");
+			transform->direction.y = 1;
 		}
 		if (currentKeyStates[SDL_SCANCODE_ESCAPE]) {
 			Game::isRunning = false;

@@ -5,6 +5,14 @@
 #include "SDL.h"
 #include<vector>
 
+const int WINDOW_WIDTH = 1600;
+const int WINDOW_HEIGHT = 900;
+
+static const int OBJECT_WIDTH = 16;
+const int OBJECT_HEIGHT = 16;
+const int MAP_WIDTH = 16 * 50;
+const int MAP_HEIGHT = 16 * 50;
+
 class ColliderComponent;
 
 class Game {
@@ -20,12 +28,17 @@ public:
 	void render();		 
 	void clean();		 
 
-	static void AddTile(int srcX, int srcY, int xpos, int ypos, const char* layerPath);
 	static SDL_Renderer* renderer;
 	static SDL_Event event;
-	static std::vector<ColliderComponent*> colliders;
 	static bool isRunning;
 	static SDL_Rect camera;
+
+	enum groupLabels : std::size_t {
+		groupMap,
+		groupPlayers,
+		groupColliders
+	};
+
 
 private:
 

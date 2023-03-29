@@ -1,8 +1,6 @@
 #include "game.h"
 #undef main
 
-const int WIDTH = 1600;
-const int HEIGHT = 900;
 Game* game = nullptr;
 
 int main(int argc, const char* argv[]) {
@@ -17,7 +15,7 @@ int main(int argc, const char* argv[]) {
 	int frameTime;
 
 	game = new Game();
-	game->init("PURE JOY", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WIDTH, HEIGHT, false);
+	game->init("PURE JOY", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WINDOW_WIDTH, WINDOW_HEIGHT, false);
 
 	while (game->running())
 	{ 	

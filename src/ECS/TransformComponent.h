@@ -8,6 +8,7 @@ public:
 	
 	Vector2D position;
 	Vector2D velocity;
+	Vector2D direction;
 
 	int height = 16;
 	int width = 16;
@@ -31,11 +32,18 @@ public:
 	}
 
 	TransformComponent(float x, float y, int w, int h, int sc) {
+		direction.y = 1;
+		direction.x = 0;
+
 		position.x = x;
 		position.y = y;
 		width = w;
 		height = h;
 		scale = sc;
+	}
+
+	bool isIdle() {
+		return (velocity.x == 0 && velocity.y == 0);
 	}
 
 	void init() override {
