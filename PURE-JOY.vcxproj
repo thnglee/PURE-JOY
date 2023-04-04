@@ -134,6 +134,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\AssetManager.h" />
     <ClInclude Include="src\Collision.h" />
     <ClInclude Include="src\ECS\Animation.h" />
     <ClInclude Include="src\ECS\ColliderComponent.h" />
@@ -149,6 +150,7 @@
     <ClInclude Include="src\Vector2D.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\AssetManager.cpp" />
     <ClCompile Include="src\Collision.cpp" />
     <ClCompile Include="src\ECS\ECS.cpp" />
     <ClCompile Include="src\game.cpp" />
@@ -158,6 +160,8 @@
     <ClCompile Include="src\Vector2D.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="assets\blankTile\16x16.png" />
+    <Image Include="assets\blankTile\16x16_walltile.png" />
     <Image Include="assets\characters\actions.png" />
     <Image Include="assets\characters\character.png" />
     <Image Include="assets\characters\cow.png" />
@@ -218,6 +222,7 @@
     <None Include="map\map_v1.1\island_v1_grass_patterns.csv" />
     <None Include="map\map_v1.1\island_v1_water.csv" />
     <None Include="map\map_v1.2\island_v1_blank_collision.csv" />
+    <None Include="map\map_v1.2\island_v1_blank_collision_box.csv" />
     <None Include="map\map_v1.2\island_v1_dirt.csv" />
     <None Include="map\map_v1.2\island_v1_fences.csv" />
     <None Include="map\map_v1.2\island_v1_grass.csv" />

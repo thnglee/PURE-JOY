@@ -4,20 +4,22 @@
 #include "ECS/Components.h"
 #include "Vector2D.h"
 #include "Collision.h"
+#include "AssetManager.h"
 
 int default_scale = 4;
 
-Map* map;
+Map* terrain;
+Map* wall;
+
 Manager manager;
 
 SDL_Renderer* Game::renderer = nullptr;
 SDL_Event Game::event;
 
+AssetManager* Game::assets = new AssetManager(&manager);
+
 SDL_Rect Game::camera = {0, 0, 1600, 900};
-
-std::vector<ColliderComponent*> Game::colliders;
 bool Game::isRunning = false;
-
 auto& player(manager.addEntity());
 
 
@@ -48,12 +50,31 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		isRunning = true;
 	}
 
+	assets->AddTexture("player", "assets/characters/character.png");
 
-	map = new Map();
+	assets->AddTexture("water", "assets/tilesets/water.png");
+	assets->AddTexture("grass", "assets/tilesets/grass.png");
+	assets->AddTexture("dirt", "assets/tilesets/dirt.png");
+	assets->AddTexture("grass_hill", "assets/tilesets/grass_hill_(3).png");
+	assets->AddTexture("grass_island", "assets/tilesets/grass_hill_(2).png");
+	assets->AddTexture("wood_bridge", "assets/objects/wood_bridge.png");
+
+	assets->AddTexture("wall", "assets/blankTile/16x16_walltile.png");
+
+	terrain = new Map(4, 16);
+	// wall = new Map(4, 16);
 
 	// ecs implementation:
 
-	map->LoadMap("")
+
+	terrain->LoadMap("map/map_v1.2/island_v1_water.csv", 50, 50, "water");
+	terrain->LoadMap("map/map_v1.2/island_v1_grass.csv", 50, 50, "grass");
+	terrain->LoadMap("map/map_v1.2/island_v1_dirt.csv", 50, 50, "dirt");
+	terrain->LoadMap("map/map_v1.2/island_v1_grass_hill_(3).csv", 50, 50, "grass_hill");
+	terrain->LoadMap("map/map_v1.2/island_v1_grass_hill_(2).csv", 50, 50, "grass_island");
+	terrain->LoadMap("map/map_v1.2/island_v1_wood_bridge.csv", 50, 50, "wood_bridge");
+
+	terrain->LoadMap("map/map_v1.2/island_v1_blank_collision_box.csv", 50, 50, "wall");
 
 	//Map::LoadMap("map/map_v1.2/island_v1_water.csv", 50, 50, water);
 	//Map::LoadMap("map/map_v1.2/island_v1_grass.csv", 50, 50, grass);
@@ -63,7 +84,7 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 	//Map::LoadMap("map/map_v1.2/island_v1_wood_bridge.csv", 50, 50, wood_bridge);
 
 	player.addComponent<TransformComponent>(0, 0, OBJECT_WIDTH, OBJECT_HEIGHT, default_scale);
-	player.addComponent<SpriteComponent>("assets/characters/character.png", true);
+	player.addComponent<SpriteComponent>("player", true);
 	player.getComponent<TransformComponent>().position.x = 250;
 	player.getComponent<TransformComponent>().position.y = 250;
 	player.addComponent<KeyboardController>();
@@ -71,10 +92,9 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 	player.addGroup(groupPlayers);
 }
 
-
 auto& tiles(manager.getGroup(Game::groupMap));
 auto& players(manager.getGroup(Game::groupPlayers));
-auto& tiles(manager.getGroup(Game::groupColliders));
+auto& colliders(manager.getGroup(Game::groupColliders));
 
 void Game::handleEvents() {
 	SDL_PollEvent(&event);
@@ -89,8 +109,22 @@ void Game::handleEvents() {
 }
 
 void Game::update() {
+
+	SDL_Rect playerCol = player.getComponent<ColliderComponent>().collider;
+	Vector2D playerPos = player.getComponent<TransformComponent>().position;
+	
+
 	manager.refresh();
 	manager.update();
+
+	for (auto& c : colliders)
+	{
+		SDL_Rect cCol = c->getComponent<ColliderComponent>().collider;
+		if (Collision::AABB(cCol, playerCol))
+		{
+			player.getComponent<TransformComponent>().position = playerPos;
+		}
+	}
 
 	camera.x = static_cast<int>(player.getComponent<TransformComponent>().position.x + OBJECT_WIDTH * default_scale / 2 - WINDOW_WIDTH / 2);
 	camera.y = static_cast<int>(player.getComponent<TransformComponent>().position.y + OBJECT_HEIGHT * default_scale / 2 - WINDOW_HEIGHT / 2);
@@ -105,15 +139,9 @@ void Game::update() {
 void Game::render() {
 	SDL_RenderClear(renderer);
 
-	for (auto& t : tiles) {
-		t->draw();
-	}
-	for (auto& p : players) {
-		p->draw();
-	}
-	for (auto& e : enemies) {
-		e->draw();
-	}
+	for (auto& t : tiles) t->draw();
+	for (auto& c : colliders) c->draw();
+	for (auto& p : players) p->draw();
 
 	SDL_RenderPresent(renderer);
 }

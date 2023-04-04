@@ -1,11 +1,7 @@
 #pragma once
 
 #include "ECS.h"
-#include "TransformComponent.h"
-#include "SpriteComponent.h"
 #include "SDL.h"
-
-const int TILE_SIZE = 16;
 
 class TileComponent : public Component {
 	
@@ -20,18 +16,18 @@ public:
 		SDL_DestroyTexture(texture);
 	}
 
-	TileComponent(int srcX, int srcY, int xpos, int ypos, int tsize, int tscale, const char* path) {
-		texture = TextureManager::LoadTexture(path);
+	TileComponent(int srcX, int srcY, int xpos, int ypos, int tsize, int tscale, std::string id) {
+		texture = Game::assets->GetTexture(id);
 
-		position.x = xpos;
-		position.y = ypos;
+		position.x = static_cast<float>(xpos);
+		position.y = static_cast<float>(ypos);
 		
 		srcRect.x = srcX;
 		srcRect.y = srcY;
 		srcRect.h = srcRect.w = tsize;
 
-		destRect.x = xpos;
-		destRect.y = ypos;
+		//destRect.x = xpos;
+		//destRect.y = ypos;
 		destRect.w = destRect.h = tsize * tscale;
 	}
 

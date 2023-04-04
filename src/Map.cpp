@@ -6,10 +6,17 @@
 
 extern Manager manager;
 
-Map::Map(const char* mfp, int mscale, int tsize) : mapFilePath(mfp), mapScale(mscale), tileSize(tsize) {}
+Map::Map(int mscale, int tsize){
+	mapScale = mscale;
+	tileSize = tsize;
+	scaledSize = mscale * tsize;
+}
+
 Map::~Map() {}
 
-void Map::LoadMap(std::string path, int sizeX, int sizeY) {
+void Map::LoadMap(std::string path, int sizeX, int sizeY, std::string tID) {
+	texID = tID;
+	
 	char c;
 	std::fstream mapFile;
 	mapFile.open(path);
@@ -18,45 +25,67 @@ void Map::LoadMap(std::string path, int sizeX, int sizeY) {
 
 
 	if (mapFile) {
-		for (int y = 0; y < sizeY; y++) {
-			for (int x = 0; x < sizeX; x++) {
-				mapFile.get(c);
-				if (c == '-') {
+		if (texID == "wall") {
+			for (int y = 0; y < sizeY; y++) {
+				for (int x = 0; x < sizeX; x++) {
 					mapFile.get(c);
+					if (c == '-') {
+						mapFile.get(c);
+						mapFile.ignore();
+						continue;
+					}
+					if (c == '0') {
+						auto& tcol(manager.addEntity());
+						tcol.addComponent<ColliderComponent>("wall", x * scaledSize, y * scaledSize, scaledSize);
+						tcol.addGroup(Game::groupColliders);
+					}
 					mapFile.ignore();
-					continue;
 				}
-				srcY = atoi(&c) * tileSize;
-				mapFile.get(c);
-				srcX = atoi(&c) * tileSize;
-
-				AddTile(srcX, srcY, x * (tileSize * mapScale), y * (tileSize * mapScale));
-				mapFile.ignore();
 			}
 		}
-		mapFile.close();
+		else {
+			for (int y = 0; y < sizeY; y++) {
+				for (int x = 0; x < sizeX; x++) {
+					mapFile.get(c);
+					if (c == '-') {
+						mapFile.get(c);
+						mapFile.ignore();
+						continue;
+					}
+					srcY = atoi(&c) * tileSize;
+					mapFile.get(c);
+					srcX = atoi(&c) * tileSize;
+
+					AddTile(srcX, srcY, x * scaledSize, y * scaledSize, texID);
+					mapFile.ignore();
+				}
+			}
+			mapFile.close();
+		}
 	}
 	else {
 		std::cout << "Can not read file" << std::endl;
 	}
 
-	mapFile.ignore();
-	for (int y = 0; y < sizeY; y++) {
+	// need to read collision box according to "tag"
+
+	/*for (int y = 0; y < sizeY; y++) {
 		for (int x = 0; x < sizeX; x++) {
 			mapFile.get(c);
 			if (c == '1') {
 				auto& tcol(manager.addEntity());
-				tcol.addComponent<ColliderComponent>("terrain", x * (tileSize * mapScale), y * (tileSize * mapScale));
-				mapFile.ignore();
+				tcol.addComponent<ColliderComponent>("terrain", x * scaledSize, y * scaledSize, scaledSize); 
+				tcol.addGroup(Game::groupColliders);
 			}
 			mapFile.ignore();
 		}
-	}
+	}*/
+
 }
 
-void Map::AddTile(int srcX, int srcY, int xpos, int ypos) {
+void Map::AddTile(int srcX, int srcY, int xpos, int ypos, std::string tID) {
 	auto& tile(manager.addEntity());
-	tile.addComponent<TileComponent>(srcX, srcY, xpos, ypos, tileSize, mapScale, mapFilePath);
+	tile.addComponent<TileComponent>(srcX, srcY, xpos, ypos, tileSize, mapScale, tID);
 	tile.addGroup(Game::groupMap);
 }
 

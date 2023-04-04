@@ -13,6 +13,7 @@ const int OBJECT_HEIGHT = 16;
 const int MAP_WIDTH = 16 * 50;
 const int MAP_HEIGHT = 16 * 50;
 
+class AssetManager;
 class ColliderComponent;
 
 class Game {
@@ -32,6 +33,8 @@ public:
 	static SDL_Event event;
 	static bool isRunning;
 	static SDL_Rect camera;
+
+	static AssetManager* assets;
 
 	enum groupLabels : std::size_t {
 		groupMap,

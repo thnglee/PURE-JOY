@@ -52,6 +52,9 @@
     <Filter Include="Resource Files\map\v1.2">
       <UniqueIdentifier>{ef3e27bd-14fc-4bd3-9d67-2c6ee5420d68}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\blankTile">
+      <UniqueIdentifier>{2f0383df-1ad0-4d7e-b8d6-143704146fde}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\game.h">
@@ -93,6 +96,9 @@
     <ClInclude Include="src\ECS\Animation.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\AssetManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\game.cpp">
@@ -114,6 +120,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\ECS\ECS.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AssetManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -265,6 +274,12 @@
     <Image Include="assets\tilesets\water.png">
       <Filter>Resource Files\tilesets</Filter>
     </Image>
+    <Image Include="assets\blankTile\16x16.png">
+      <Filter>Resource Files\blankTile</Filter>
+    </Image>
+    <Image Include="assets\blankTile\16x16_walltile.png">
+      <Filter>Resource Files\blankTile</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <None Include="map\map_v1.0\island_v1_fences.csv">
@@ -316,6 +331,9 @@
       <Filter>Resource Files\map\v1.2</Filter>
     </None>
     <None Include="map\map_v1.2\island_v1_blank_collision.csv">
+      <Filter>Resource Files\map\v1.2</Filter>
+    </None>
+    <None Include="map\map_v1.2\island_v1_blank_collision_box.csv">
       <Filter>Resource Files\map\v1.2</Filter>
     </None>
   </ItemGroup>
