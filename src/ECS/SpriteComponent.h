@@ -26,8 +26,8 @@ public:
 
 	SpriteComponent() = default;
 
-	SpriteComponent(const char* path) {
-		setTex(path);
+	SpriteComponent(std::string id) {
+		setTex(id);
 	}
 
 	SpriteComponent(std::string id, bool isAnimated) {

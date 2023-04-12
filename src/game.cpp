@@ -50,8 +50,10 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		isRunning = true;
 	}
 
+	// player texture:
 	assets->AddTexture("player", "assets/characters/character.png");
 
+	// map texture:
 	assets->AddTexture("water", "assets/tilesets/water.png");
 	assets->AddTexture("grass", "assets/tilesets/grass.png");
 	assets->AddTexture("dirt", "assets/tilesets/dirt.png");
@@ -59,7 +61,11 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 	assets->AddTexture("grass_island", "assets/tilesets/grass_hill_(2).png");
 	assets->AddTexture("wood_bridge", "assets/objects/wood_bridge.png");
 
+	// wall texture: [collision box]
 	assets->AddTexture("wall", "assets/blankTile/16x16_walltile.png");
+
+	// projectile texture:
+	assets->AddTexture("proj_test", "assets/blankTile/16x16_walltile.png");
 
 	terrain = new Map(4, 16);
 	// wall = new Map(4, 16);
@@ -85,16 +91,25 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 
 	player.addComponent<TransformComponent>(0, 0, OBJECT_WIDTH, OBJECT_HEIGHT, default_scale);
 	player.addComponent<SpriteComponent>("player", true);
-	player.getComponent<TransformComponent>().position.x = 250;
-	player.getComponent<TransformComponent>().position.y = 250;
+	player.getComponent<TransformComponent>().position.x = 400;
+	player.getComponent<TransformComponent>().position.y = 400;
 	player.addComponent<KeyboardController>();
 	player.addComponent<ColliderComponent>("player");
 	player.addGroup(groupPlayers);
+
+	// creating projectile:
+	assets->CreateProjectile(Vector2D(100, 100), Vector2D(2, 0), 200, 2, "proj_test");
+	assets->CreateProjectile(Vector2D(600, 620), Vector2D(2, 0), 200, 2, "proj_test");
+	assets->CreateProjectile(Vector2D(250, 250), Vector2D(2, 1), 200, 2, "proj_test");
+	assets->CreateProjectile(Vector2D(500, 500), Vector2D(2, -1), 200, 2, "proj_test");
+	assets->CreateProjectile(Vector2D(200, 200), Vector2D(2, 0), 200, 2, "proj_test");
+
 }
 
 auto& tiles(manager.getGroup(Game::groupMap));
 auto& players(manager.getGroup(Game::groupPlayers));
 auto& colliders(manager.getGroup(Game::groupColliders));
+auto& projectiles(manager.getGroup(Game::groupProjectiles));
 
 void Game::handleEvents() {
 	SDL_PollEvent(&event);
@@ -112,17 +127,23 @@ void Game::update() {
 
 	SDL_Rect playerCol = player.getComponent<ColliderComponent>().collider;
 	Vector2D playerPos = player.getComponent<TransformComponent>().position;
-	
 
 	manager.refresh();
 	manager.update();
-
+	
 	for (auto& c : colliders)
 	{
 		SDL_Rect cCol = c->getComponent<ColliderComponent>().collider;
 		if (Collision::AABB(cCol, playerCol))
 		{
 			player.getComponent<TransformComponent>().position = playerPos;
+		}
+	}
+
+	for (auto& p : projectiles) {
+		if (Collision::AABB(player.getComponent<ColliderComponent>().collider, p->getComponent<ColliderComponent>().collider)) {
+			std::cout << "Hit player !" << std::endl;
+			p->destroy();
 		}
 	}
 
@@ -140,8 +161,9 @@ void Game::render() {
 	SDL_RenderClear(renderer);
 
 	for (auto& t : tiles) t->draw();
-	for (auto& c : colliders) c->draw();
+	// for (auto& c : colliders) c->draw();
 	for (auto& p : players) p->draw();
+	for (auto& p : projectiles) p->draw();
 
 	SDL_RenderPresent(renderer);
 }

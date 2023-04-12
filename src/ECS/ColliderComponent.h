@@ -10,7 +10,7 @@ public:
 	SDL_Rect collider;
 	std::string tag;
 
-	//SDL_Texture* tex;
+	SDL_Texture* tex;
 
 	SDL_Rect srcR, destR;
 
@@ -33,7 +33,7 @@ public:
 		}
 		transform = &entity->getComponent<TransformComponent>();
 
-		//tex = TextureManager::LoadTexture("assets/blankTile/16x16_walltile.png");
+		tex = TextureManager::LoadTexture("assets/blankTile/16x16_walltile.png");
 
 		srcR = { 0,0,16,16};
 		destR = { collider.x, collider.y, collider.w, collider.h };	
@@ -41,10 +41,10 @@ public:
 
 	void update() override {
 		if (tag != "wall") {
-			collider.x = static_cast<int>(transform->position.x);
-			collider.y = static_cast<int>(transform->position.y);
-			collider.w = transform->width * transform->scale;
-			collider.h = transform->height * transform->scale;
+			collider.x = static_cast<int>(transform->position.x + 2 * transform->scale);
+			collider.y = static_cast<int>(transform->position.y + 12 * transform->scale);
+			collider.w = transform->width * transform->scale * 3 / 4;
+			collider.h = transform->height * transform->scale / 2;
 		}
 	
 		destR.x = collider.x - Game::camera.x;
@@ -52,6 +52,6 @@ public:
 	}
 
 	void draw() override {
-		//TextureManager::Draw(tex, srcR, destR, SDL_FLIP_NONE);
+		TextureManager::Draw(tex, srcR, destR, SDL_FLIP_NONE);
 	}
 };
