@@ -1,7 +1,13 @@
 # PURE-JOY
 
-a game about farming, pretty much similar to Stardew Valley
+- A simulation video game.
+- All you have to do is living among cows and stuff.
 
-still in progress
+[still in progress...]
 
-all you have to do is surviving with cows and stuff.
+<sup>HOW TO PLAY</sup>
+- Use WASD to move around.
+
+<sup>DEVLOG</sup>
+- Game engine refined. 
+- Finished setting up map collision.
