@@ -5,41 +5,34 @@
 #include "Vector2D.h"
 #include "Collision.h"
 #include "AssetManager.h"
+#include<sstream>
 
-int default_scale = 4;
-
-Map* terrain;
-Map* wall;
-
-Manager manager;
-
+// init value:
 SDL_Renderer* Game::renderer = nullptr;
 SDL_Event Game::event;
-
-AssetManager* Game::assets = new AssetManager(&manager);
-
-SDL_Rect Game::camera = {0, 0, 1600, 900};
 bool Game::isRunning = false;
+
+// map init and scale:
+Map* terrain;
+Map* CollisionBox;
+int default_scale = 4;
+
+// adding entities:
+Manager manager;
 auto& player(manager.addEntity());
-
-
-//const char* water = "assets/tilesets/water.png";
-//const char* grass = "assets/tilesets/grass.png";
-//const char* grass_hill_2 = "assets/tilesets/grass_hill_(2).png";
-//const char* wood_bridge = "assets/objects/wood_bridge.png";
-//const char* grass_hill_3 = "assets/tilesets/grass_hill_(3).png";
-//const char* dirt = "assets/tilesets/dirt.png";
+auto& label(manager.addEntity());
+AssetManager* Game::assets = new AssetManager(&manager);
+SDL_Rect Game::camera = {0, 0, 1600, 900};
 
 Game::Game() {}
 Game::~Game() {}
 
 void Game::init(const char* title, int xpos, int ypos, int width, int height, bool fullscreen) {
-
+	// game init:
 	int flags = 0;
 	if (fullscreen) {
 		flags = SDL_WINDOW_FULLSCREEN;
 	}
-
 	if (SDL_Init(SDL_INIT_EVERYTHING) == 0) {
 		window = SDL_CreateWindow(title, xpos, ypos, width, height, flags);
 		SDL_SetWindowBordered(window, SDL_FALSE);
@@ -53,64 +46,54 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 	// player texture:
 	assets->AddTexture("player", "assets/characters/character.png");
 
-	// map texture:
+	// terrain textures:
 	assets->AddTexture("water", "assets/tilesets/water.png");
 	assets->AddTexture("grass", "assets/tilesets/grass.png");
 	assets->AddTexture("dirt", "assets/tilesets/dirt.png");
 	assets->AddTexture("grass_hill", "assets/tilesets/grass_hill_(3).png");
 	assets->AddTexture("grass_island", "assets/tilesets/grass_hill_(2).png");
 	assets->AddTexture("wood_bridge", "assets/objects/wood_bridge.png");
+	assets->AddTexture("grassbiom", "assets/objects/grassbiom.png");
 
 	// wall texture: [collision box]
-	assets->AddTexture("wall", "assets/blankTile/16x16_walltile.png");
+	assets->AddTexture("wall", "assets/blankTile/1x1.png");
 
 	// projectile texture:
 	assets->AddTexture("proj_test", "assets/blankTile/16x16_walltile.png");
 
+	// map textures loading: 
 	terrain = new Map(4, 16);
-	// wall = new Map(4, 16);
+	terrain->LoadMap("map/map_v1.3/island_v1_water.csv", 50, 50, "water");
+	terrain->LoadMap("map/map_v1.3/island_v1_grass.csv", 50, 50, "grass");
+	terrain->LoadMap("map/map_v1.3/island_v1_dirt.csv", 50, 50, "dirt");
+	terrain->LoadMap("map/map_v1.3/island_v1_grass_hill_(3).csv", 50, 50, "grass_hill");
+	terrain->LoadMap("map/map_v1.3/island_v1_grass_hill_(2).csv", 50, 50, "grass_island");
+	terrain->LoadMap("map/map_v1.3/island_v1_wood_bridge.csv", 50, 50, "wood_bridge");
+	terrain->LoadMap("map/map_v1.3/island_v1_grassbiom.csv", 50, 50, "grassbiom");
+	//terrain->LoadMap("map/map_v1.3/island_v1_blank_collision_box.csv", 50, 50, "wall");
 
-	// ecs implementation:
+	// Map collision loading: 
+	CollisionBox = new Map(4, 1);
+	CollisionBox->LoadMap("map/map_v1.3/1x1_collision_box_1x1.csv", 800, 800, "wall");
 
-
-	terrain->LoadMap("map/map_v1.2/island_v1_water.csv", 50, 50, "water");
-	terrain->LoadMap("map/map_v1.2/island_v1_grass.csv", 50, 50, "grass");
-	terrain->LoadMap("map/map_v1.2/island_v1_dirt.csv", 50, 50, "dirt");
-	terrain->LoadMap("map/map_v1.2/island_v1_grass_hill_(3).csv", 50, 50, "grass_hill");
-	terrain->LoadMap("map/map_v1.2/island_v1_grass_hill_(2).csv", 50, 50, "grass_island");
-	terrain->LoadMap("map/map_v1.2/island_v1_wood_bridge.csv", 50, 50, "wood_bridge");
-
-	terrain->LoadMap("map/map_v1.2/island_v1_blank_collision_box.csv", 50, 50, "wall");
-
-	//Map::LoadMap("map/map_v1.2/island_v1_water.csv", 50, 50, water);
-	//Map::LoadMap("map/map_v1.2/island_v1_grass.csv", 50, 50, grass);
-	//Map::LoadMap("map/map_v1.2/island_v1_dirt.csv", 50, 50, dirt);
-	//Map::LoadMap("map/map_v1.2/island_v1_grass_hill_(3).csv", 50, 50, grass_hill_3);
-	//Map::LoadMap("map/map_v1.2/island_v1_grass_hill_(2).csv", 50, 50, grass_hill_2);
-	//Map::LoadMap("map/map_v1.2/island_v1_wood_bridge.csv", 50, 50, wood_bridge);
-
+	// init player:
 	player.addComponent<TransformComponent>(0, 0, OBJECT_WIDTH, OBJECT_HEIGHT, default_scale);
 	player.addComponent<SpriteComponent>("player", true);
-	player.getComponent<TransformComponent>().position.x = 400;
-	player.getComponent<TransformComponent>().position.y = 400;
+	player.getComponent<TransformComponent>().position.x = 450;
+	player.getComponent<TransformComponent>().position.y = 450;
 	player.addComponent<KeyboardController>();
 	player.addComponent<ColliderComponent>("player");
 	player.addGroup(groupPlayers);
 
-	// creating projectile:
-	assets->CreateProjectile(Vector2D(100, 100), Vector2D(2, 0), 200, 2, "proj_test");
-	assets->CreateProjectile(Vector2D(600, 620), Vector2D(2, 0), 200, 2, "proj_test");
-	assets->CreateProjectile(Vector2D(250, 250), Vector2D(2, 1), 200, 2, "proj_test");
-	assets->CreateProjectile(Vector2D(500, 500), Vector2D(2, -1), 200, 2, "proj_test");
-	assets->CreateProjectile(Vector2D(200, 200), Vector2D(2, 0), 200, 2, "proj_test");
-
 }
 
+// grouping entities:
 auto& tiles(manager.getGroup(Game::groupMap));
 auto& players(manager.getGroup(Game::groupPlayers));
 auto& colliders(manager.getGroup(Game::groupColliders));
 auto& projectiles(manager.getGroup(Game::groupProjectiles));
 
+// handling events:
 void Game::handleEvents() {
 	SDL_PollEvent(&event);
 	switch (event.type)
@@ -123,6 +106,7 @@ void Game::handleEvents() {
 	}
 }
 
+// updating the game:
 void Game::update() {
 
 	SDL_Rect playerCol = player.getComponent<ColliderComponent>().collider;
@@ -131,15 +115,15 @@ void Game::update() {
 	manager.refresh();
 	manager.update();
 	
+	// colliding tracking:
 	for (auto& c : colliders)
 	{
 		SDL_Rect cCol = c->getComponent<ColliderComponent>().collider;
-		if (Collision::AABB(cCol, playerCol))
-		{
+		if (Collision::AABB(cCol, playerCol)) {
 			player.getComponent<TransformComponent>().position = playerPos;
 		}
 	}
-
+	// projectile hitting tracking:
 	for (auto& p : projectiles) {
 		if (Collision::AABB(player.getComponent<ColliderComponent>().collider, p->getComponent<ColliderComponent>().collider)) {
 			std::cout << "Hit player !" << std::endl;
@@ -147,27 +131,28 @@ void Game::update() {
 		}
 	}
 
+	// camera following player:
 	camera.x = static_cast<int>(player.getComponent<TransformComponent>().position.x + OBJECT_WIDTH * default_scale / 2 - WINDOW_WIDTH / 2);
 	camera.y = static_cast<int>(player.getComponent<TransformComponent>().position.y + OBJECT_HEIGHT * default_scale / 2 - WINDOW_HEIGHT / 2);
-
 	if (camera.x < 0) camera.x = 0;
 	if (camera.y < 0) camera.y = 0;
 	if (camera.x > MAP_WIDTH * default_scale - camera.w) camera.x = MAP_WIDTH * default_scale - camera.w;
 	if (camera.y > MAP_HEIGHT * default_scale - camera.h) camera.y = MAP_HEIGHT * default_scale - camera.h;
 }
 
-
+// screen rendering:
 void Game::render() {
 	SDL_RenderClear(renderer);
-
+		
 	for (auto& t : tiles) t->draw();
-	// for (auto& c : colliders) c->draw();
+	for (auto& c : colliders) c->draw();
 	for (auto& p : players) p->draw();
 	for (auto& p : projectiles) p->draw();
 
 	SDL_RenderPresent(renderer);
 }
 
+// clean up the mess:
 void Game::clean() {
 	SDL_DestroyWindow(window);
 	SDL_DestroyRenderer(renderer);

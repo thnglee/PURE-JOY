@@ -9,6 +9,7 @@ public:
 	SDL_Texture* texture;
 	SDL_Rect srcRect, destRect;
 	Vector2D position;
+	std::string texID;
 
 	TileComponent() = default;
 
@@ -17,7 +18,8 @@ public:
 	}
 
 	TileComponent(int srcX, int srcY, int xpos, int ypos, int tsize, int tscale, std::string id) {
-		texture = Game::assets->GetTexture(id);
+		texID = id;
+		texture = Game::assets->GetTexture(texID);
 
 		position.x = static_cast<float>(xpos);
 		position.y = static_cast<float>(ypos);
@@ -32,6 +34,11 @@ public:
 	}
 
 	void update() override {
+		if (texID == "water") {
+			srcRect.x = srcRect.y = 0;
+			srcRect.w = srcRect.h = 16;
+			srcRect.x = srcRect.w * static_cast<int>((SDL_GetTicks() / 200) % 4);
+		}
 		destRect.x = position.x - Game::camera.x;
 		destRect.y = position.y - Game::camera.y;
 	}

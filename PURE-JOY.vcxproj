@@ -145,6 +145,7 @@
     <ClInclude Include="src\ECS\TileComponent.h" />
     <ClInclude Include="src\ECS\TransformComponent.h" />
     <ClInclude Include="src\ECS\SpriteComponent.h" />
+    <ClInclude Include="src\ECS\UILabel.h" />
     <ClInclude Include="src\game.h" />
     <ClInclude Include="src\Map.h" />
     <ClInclude Include="src\TextureManager.h" />
@@ -163,6 +164,7 @@
   <ItemGroup>
     <Image Include="assets\blankTile\16x16.png" />
     <Image Include="assets\blankTile\16x16_walltile.png" />
+    <Image Include="assets\blankTile\1x1.png" />
     <Image Include="assets\characters\actions.png" />
     <Image Include="assets\characters\character.png" />
     <Image Include="assets\characters\cow.png" />
@@ -227,11 +229,26 @@
     <None Include="map\map_v1.2\island_v1_dirt.csv" />
     <None Include="map\map_v1.2\island_v1_fences.csv" />
     <None Include="map\map_v1.2\island_v1_grass.csv" />
+    <None Include="map\map_v1.2\island_v1_grassbiom.csv" />
     <None Include="map\map_v1.2\island_v1_grass_(2).csv" />
     <None Include="map\map_v1.2\island_v1_grass_hill_(2).csv" />
     <None Include="map\map_v1.2\island_v1_grass_hill_(3).csv" />
     <None Include="map\map_v1.2\island_v1_water.csv" />
     <None Include="map\map_v1.2\island_v1_wood_bridge.csv" />
+    <None Include="map\map_v1.3\1x1_collision_box_1x1.csv" />
+    <None Include="map\map_v1.3\island_v1_blank_collision_box.csv" />
+    <None Include="map\map_v1.3\island_v1_dirt.csv" />
+    <None Include="map\map_v1.3\island_v1_grass.csv" />
+    <None Include="map\map_v1.3\island_v1_grassbiom.csv" />
+    <None Include="map\map_v1.3\island_v1_grass_hill_(2).csv" />
+    <None Include="map\map_v1.3\island_v1_grass_hill_(3).csv" />
+    <None Include="map\map_v1.3\island_v1_water.csv" />
+    <None Include="map\map_v1.3\island_v1_wood_bridge.csv" />
+    <None Include="map\map_v1.3\pixel_perfect_collision_pixel_perfect_collision.csv" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="assets\fonts\Abaddon_Bold.ttf" />
+    <Font Include="assets\fonts\Abaddon_Light.ttf" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

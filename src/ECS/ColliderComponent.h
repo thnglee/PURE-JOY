@@ -33,18 +33,23 @@ public:
 		}
 		transform = &entity->getComponent<TransformComponent>();
 
-		tex = TextureManager::LoadTexture("assets/blankTile/16x16_walltile.png");
+		tex = TextureManager::LoadTexture("assets/blankTile/1x1.png");
 
-		srcR = { 0,0,16,16};
-		destR = { collider.x, collider.y, collider.w, collider.h };	
+		srcR.x = srcR.y = 0;
+		srcR.w = srcR.h = 1;
+		
+		destR.x = collider.x;
+		destR.y = collider.y;
+		destR.w = destR.h = collider.w;
+
 	}
 
 	void update() override {
-		if (tag != "wall") {
+		if (tag == "player") {
 			collider.x = static_cast<int>(transform->position.x + 2 * transform->scale);
 			collider.y = static_cast<int>(transform->position.y + 12 * transform->scale);
 			collider.w = transform->width * transform->scale * 3 / 4;
-			collider.h = transform->height * transform->scale / 2;
+			collider.h = transform->height * transform->scale / 4;
 		}
 	
 		destR.x = collider.x - Game::camera.x;

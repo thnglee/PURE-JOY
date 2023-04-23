@@ -23,7 +23,6 @@ void Map::LoadMap(std::string path, int sizeX, int sizeY, std::string tID) {
 
 	int srcX, srcY;
 
-
 	if (mapFile) {
 		if (texID == "wall") {
 			for (int y = 0; y < sizeY; y++) {
@@ -36,7 +35,7 @@ void Map::LoadMap(std::string path, int sizeX, int sizeY, std::string tID) {
 					}
 					if (c == '0') {
 						auto& tcol(manager.addEntity());
-						tcol.addComponent<ColliderComponent>("wall", x * scaledSize, y * scaledSize, scaledSize);
+						tcol.addComponent<ColliderComponent>("wall", x * scaledSize,y * scaledSize, scaledSize);
 						tcol.addGroup(Game::groupColliders);
 					}
 					mapFile.ignore();

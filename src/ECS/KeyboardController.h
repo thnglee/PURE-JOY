@@ -15,6 +15,9 @@ public:
 	}
 
 	void update() override {
+		Vector2D playerPos = transform->position;
+		Vector2D playerDirection = transform->direction;
+
 		transform->velocity.Zero();
 
 		if (transform->direction.y == -1 && transform->isIdle()) sprite->Play("IdleUp");

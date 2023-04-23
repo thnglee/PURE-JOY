@@ -55,6 +55,12 @@
     <Filter Include="Resource Files\blankTile">
       <UniqueIdentifier>{2f0383df-1ad0-4d7e-b8d6-143704146fde}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\fonts">
+      <UniqueIdentifier>{358de7db-3325-4698-a966-034a903015a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\map\v1.3">
+      <UniqueIdentifier>{759ee772-26ef-4f5d-b017-b6d45ef69d61}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\game.h">
@@ -99,7 +105,10 @@
     <ClInclude Include="src\AssetManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\ECS\Projectile.h">
+    <ClInclude Include="src\ECS\ProjectileComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ECS\UILabel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -283,6 +292,9 @@
     <Image Include="assets\blankTile\16x16_walltile.png">
       <Filter>Resource Files\blankTile</Filter>
     </Image>
+    <Image Include="assets\blankTile\1x1.png">
+      <Filter>Resource Files\blankTile</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <None Include="map\map_v1.0\island_v1_fences.csv">
@@ -339,5 +351,46 @@
     <None Include="map\map_v1.2\island_v1_blank_collision_box.csv">
       <Filter>Resource Files\map\v1.2</Filter>
     </None>
+    <None Include="map\map_v1.2\island_v1_grassbiom.csv">
+      <Filter>Resource Files\map\v1.2</Filter>
+    </None>
+    <None Include="map\map_v1.3\island_v1_blank_collision_box.csv">
+      <Filter>Resource Files\map\v1.3</Filter>
+    </None>
+    <None Include="map\map_v1.3\island_v1_dirt.csv">
+      <Filter>Resource Files\map\v1.3</Filter>
+    </None>
+    <None Include="map\map_v1.3\island_v1_grass.csv">
+      <Filter>Resource Files\map\v1.3</Filter>
+    </None>
+    <None Include="map\map_v1.3\island_v1_grass_hill_(2).csv">
+      <Filter>Resource Files\map\v1.3</Filter>
+    </None>
+    <None Include="map\map_v1.3\island_v1_grass_hill_(3).csv">
+      <Filter>Resource Files\map\v1.3</Filter>
+    </None>
+    <None Include="map\map_v1.3\island_v1_grassbiom.csv">
+      <Filter>Resource Files\map\v1.3</Filter>
+    </None>
+    <None Include="map\map_v1.3\island_v1_water.csv">
+      <Filter>Resource Files\map\v1.3</Filter>
+    </None>
+    <None Include="map\map_v1.3\island_v1_wood_bridge.csv">
+      <Filter>Resource Files\map\v1.3</Filter>
+    </None>
+    <None Include="map\map_v1.3\pixel_perfect_collision_pixel_perfect_collision.csv">
+      <Filter>Resource Files\map\v1.3</Filter>
+    </None>
+    <None Include="map\map_v1.3\1x1_collision_box_1x1.csv">
+      <Filter>Resource Files\map\v1.3</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="assets\fonts\Abaddon_Bold.ttf">
+      <Filter>Resource Files\fonts</Filter>
+    </Font>
+    <Font Include="assets\fonts\Abaddon_Light.ttf">
+      <Filter>Resource Files\fonts</Filter>
+    </Font>
   </ItemGroup>
 </Project>
