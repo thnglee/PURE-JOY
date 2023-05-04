@@ -27,7 +27,7 @@ public:
 	void update();		
 	bool running() { return isRunning;}		
 	void render();		 
-	void clean();		 
+	void clean();	
 
 	static SDL_Renderer* renderer;
 	static SDL_Event event;
@@ -40,7 +40,8 @@ public:
 		groupMap,
 		groupPlayers,
 		groupColliders,
-		groupProjectiles
+		groupProjectiles,
+		groupObjects
 	};
 
 

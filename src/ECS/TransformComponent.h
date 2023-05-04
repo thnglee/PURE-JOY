@@ -3,7 +3,6 @@
 #include "../Vector2D.h"
 
 class TransformComponent : public Component {
-
 public:
 	
 	Vector2D position;
@@ -32,9 +31,6 @@ public:
 	}
 
 	TransformComponent(float x, float y, int w, int h, int sc) {
-		direction.y = 1;
-		direction.x = 0;
-
 		position.x = x;
 		position.y = y;
 		width = w;
@@ -47,6 +43,8 @@ public:
 	}
 
 	void init() override {
+		direction.y = 1;
+		direction.x = 0;
 		velocity.Zero();
 	}
 

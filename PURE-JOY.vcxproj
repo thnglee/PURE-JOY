@@ -137,6 +137,7 @@
     <ClInclude Include="src\AssetManager.h" />
     <ClInclude Include="src\Collision.h" />
     <ClInclude Include="src\ECS\Animation.h" />
+    <ClInclude Include="src\ECS\BehaviorComponent.h" />
     <ClInclude Include="src\ECS\ColliderComponent.h" />
     <ClInclude Include="src\ECS\Components.h" />
     <ClInclude Include="src\ECS\ECS.h" />
@@ -214,6 +215,8 @@
     <Image Include="assets\tilesets\grass_hill_(4).png" />
     <Image Include="assets\tilesets\water.png" />
     <Image Include="assets\tilesets\wood_house.png" />
+    <Image Include="map\image\island_v1.0.png" />
+    <Image Include="map\image\island_v1.4.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="map\map_v1.0\island_v1_fences.csv" />
@@ -245,6 +248,22 @@
     <None Include="map\map_v1.3\island_v1_water.csv" />
     <None Include="map\map_v1.3\island_v1_wood_bridge.csv" />
     <None Include="map\map_v1.3\pixel_perfect_collision_pixel_perfect_collision.csv" />
+    <None Include="map\map_v1.4\1x1_collision_box_1x1.csv" />
+    <None Include="map\map_v1.4\island_v1.4_dirt.csv" />
+    <None Include="map\map_v1.4\island_v1.4_grass.csv" />
+    <None Include="map\map_v1.4\island_v1.4_grassbiom.csv" />
+    <None Include="map\map_v1.4\island_v1.4_grass_hill_(2).csv" />
+    <None Include="map\map_v1.4\island_v1.4_grass_hill_(3).csv" />
+    <None Include="map\map_v1.4\island_v1.4_grass_patterns.csv" />
+    <None Include="map\map_v1.4\island_v1.4_water.csv" />
+    <None Include="map\map_v1.4\island_v1.4_wood_bridge.csv" />
+    <None Include="map\map_v1.4\lua for objects\big_rocks.csv" />
+    <None Include="map\map_v1.4\lua for objects\big_trees.csv" />
+    <None Include="map\map_v1.4\lua for objects\big_trees_ripe.csv" />
+    <None Include="map\map_v1.4\lua for objects\bushes.csv" />
+    <None Include="map\map_v1.4\lua for objects\bushes_ripe.csv" />
+    <None Include="map\map_v1.4\lua for objects\small_rocks.csv" />
+    <None Include="map\map_v1.4\lua for objects\small_trees.csv" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="assets\fonts\Abaddon_Bold.ttf" />

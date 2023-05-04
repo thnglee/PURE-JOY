@@ -61,6 +61,15 @@
     <Filter Include="Resource Files\map\v1.3">
       <UniqueIdentifier>{759ee772-26ef-4f5d-b017-b6d45ef69d61}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\map\v1.4">
+      <UniqueIdentifier>{8d4c1904-0c19-4178-93e9-85c4a744c54c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\map\map_images">
+      <UniqueIdentifier>{6932c407-d63e-46d4-a7b1-e7a95292c56e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\map\objects">
+      <UniqueIdentifier>{f47eed16-f7fa-45ae-b29f-bd6d66c51189}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\game.h">
@@ -109,6 +118,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\ECS\UILabel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ECS\BehaviorComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -295,6 +307,12 @@
     <Image Include="assets\blankTile\1x1.png">
       <Filter>Resource Files\blankTile</Filter>
     </Image>
+    <Image Include="map\image\island_v1.0.png">
+      <Filter>Resource Files\map\map_images</Filter>
+    </Image>
+    <Image Include="map\image\island_v1.4.png">
+      <Filter>Resource Files\map\map_images</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <None Include="map\map_v1.0\island_v1_fences.csv">
@@ -383,6 +401,54 @@
     </None>
     <None Include="map\map_v1.3\1x1_collision_box_1x1.csv">
       <Filter>Resource Files\map\v1.3</Filter>
+    </None>
+    <None Include="map\map_v1.4\1x1_collision_box_1x1.csv">
+      <Filter>Resource Files\map\v1.4</Filter>
+    </None>
+    <None Include="map\map_v1.4\island_v1.4_dirt.csv">
+      <Filter>Resource Files\map\v1.4</Filter>
+    </None>
+    <None Include="map\map_v1.4\island_v1.4_grass.csv">
+      <Filter>Resource Files\map\v1.4</Filter>
+    </None>
+    <None Include="map\map_v1.4\island_v1.4_grass_hill_(2).csv">
+      <Filter>Resource Files\map\v1.4</Filter>
+    </None>
+    <None Include="map\map_v1.4\island_v1.4_grass_hill_(3).csv">
+      <Filter>Resource Files\map\v1.4</Filter>
+    </None>
+    <None Include="map\map_v1.4\island_v1.4_grass_patterns.csv">
+      <Filter>Resource Files\map\v1.4</Filter>
+    </None>
+    <None Include="map\map_v1.4\island_v1.4_grassbiom.csv">
+      <Filter>Resource Files\map\v1.4</Filter>
+    </None>
+    <None Include="map\map_v1.4\island_v1.4_water.csv">
+      <Filter>Resource Files\map\v1.4</Filter>
+    </None>
+    <None Include="map\map_v1.4\island_v1.4_wood_bridge.csv">
+      <Filter>Resource Files\map\v1.4</Filter>
+    </None>
+    <None Include="map\map_v1.4\lua for objects\small_rocks.csv">
+      <Filter>Resource Files\map\objects</Filter>
+    </None>
+    <None Include="map\map_v1.4\lua for objects\bushes.csv">
+      <Filter>Resource Files\map\objects</Filter>
+    </None>
+    <None Include="map\map_v1.4\lua for objects\big_trees.csv">
+      <Filter>Resource Files\map\objects</Filter>
+    </None>
+    <None Include="map\map_v1.4\lua for objects\big_rocks.csv">
+      <Filter>Resource Files\map\objects</Filter>
+    </None>
+    <None Include="map\map_v1.4\lua for objects\big_trees_ripe.csv">
+      <Filter>Resource Files\map\objects</Filter>
+    </None>
+    <None Include="map\map_v1.4\lua for objects\bushes_ripe.csv">
+      <Filter>Resource Files\map\objects</Filter>
+    </None>
+    <None Include="map\map_v1.4\lua for objects\small_trees.csv">
+      <Filter>Resource Files\map\objects</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
